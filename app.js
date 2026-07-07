@@ -63,12 +63,13 @@
   })();
 
   function setLang(lang) {
-    // sync mobile switch + persist choice (UI-only; content stays SK)
-    document.querySelectorAll('.mnav-langs button').forEach(function (b) {
+    document.querySelectorAll('.mnav-langs button, .lang-menu button').forEach(function (b) {
       b.classList.toggle('on', b.getAttribute('data-lang') === lang);
     });
     const c = topnav && topnav.querySelector('.lang-code'); if (c) c.textContent = lang;
     document.documentElement.setAttribute('data-lang', lang);
+    if (window.__i18n) window.__i18n(lang);
+    try { localStorage.setItem('lang', lang); } catch (e) {}
   }
 
   /* ---------- mobile navbar + overlay menu ---------- */
@@ -189,13 +190,13 @@
   }
 
   /* ---------- contact form: validation + states ---------- */
-  const MSG = {
-    required: 'Toto pole je povinné.',
-    email: 'Zadajte platnú emailovú adresu.',
-    fix: 'Skontrolujte, prosím, zvýraznené polia.',
-    ok: 'Ďakujeme! Ozveme sa vám čo najskôr.',
-    sending: 'Odosielam…'
+  const MSGS = {
+    SK: { fix: 'Skontrolujte, prosím, zvýraznené polia.', ok: 'Ďakujeme! Ozveme sa vám čo najskôr.', sending: 'Odosielam…' },
+    EN: { fix: 'Please check the highlighted fields.', ok: "Thank you! We'll get back to you soon.", sending: 'Sending…' },
+    DE: { fix: 'Bitte überprüfen Sie die markierten Felder.', ok: 'Danke! Wir melden uns bald bei Ihnen.', sending: 'Senden…' },
+    NL: { fix: 'Controleer de gemarkeerde velden.', ok: 'Bedankt! We nemen snel contact op.', sending: 'Versturen…' }
   };
+  function msg(k) { const l = document.documentElement.getAttribute('data-lang') || 'SK'; return (MSGS[l] || MSGS.SK)[k]; }
   function emailValid(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }
   document.addEventListener('submit', function (e) { e.preventDefault(); });
   document.addEventListener('click', function (e) {
@@ -218,19 +219,19 @@
     });
     if (status) { status.classList.remove('ok', 'err'); }
     if (firstErr) {
-      if (status) { status.textContent = MSG.fix; status.classList.add('err'); }
+      if (status) { status.textContent = msg('fix'); status.classList.add('err'); }
       firstErr.focus();
       return;
     }
     // success
     b.disabled = true;
-    b.textContent = MSG.sending;
+    b.textContent = msg('sending');
     if (status) { status.textContent = ''; }
     setTimeout(function () {
       b.disabled = false;
       b.textContent = 'Odoslať';
       fields.forEach(function (f) { f.value = ''; f.classList.remove('field-err'); });
-      if (status) { status.textContent = MSG.ok; status.classList.add('ok'); }
+      if (status) { status.textContent = msg('ok'); status.classList.add('ok'); }
     }, 900);
   });
   // clear a field's error state as the user types
