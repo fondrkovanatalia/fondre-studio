@@ -85,15 +85,16 @@ img{display:block}
 
 /* ================= MARQUEE ================= */
 .marquee{position:absolute;overflow:hidden;display:flex;align-items:center}
-.marquee .row{display:flex;gap:38px;width:max-content;align-items:center;height:226px;padding-left:30px;animation:marqueeMove 30s linear infinite}
+/* one group = 5 cards*226 + 5 gaps*38 = 1320px -> seamless loop */
+.marquee .row{display:flex;gap:38px;width:max-content;align-items:center;height:226px;padding-left:30px;--shift:1320px;animation:marqueeMove 26s linear infinite}
 .marquee:hover .row{animation-play-state:paused}
 .marquee-card{width:226px;height:226px;border-radius:30px;
   background:linear-gradient(120deg,rgba(20,30,54,.55),rgba(10,19,36,.35));
   border:1px solid rgba(255,255,255,.06);
   display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-.marquee-card img{max-width:62%;max-height:44%;object-fit:contain;opacity:.92}
-/* one group = 6 cards*226 + 6 gaps*38 = 1584px -> seamless loop */
-@keyframes marqueeMove{from{transform:translateX(0)}to{transform:translateX(-1584px)}}
+/* normalize every logo to the same optical height */
+.marquee-card img{width:auto;height:auto;max-width:150px;max-height:47px;object-fit:contain;opacity:.9}
+@keyframes marqueeMove{from{transform:translateX(0)}to{transform:translateX(calc(var(--shift,1320px) * -1))}}
 
 /* legal pages (Ochrana súkromia / Pravidlá používania) */
 .legal-body h2{font-family:'Tenor Sans',serif;font-size:30px;color:#fff;letter-spacing:-1.2px;margin:40px 0 14px;line-height:1.15}
@@ -208,10 +209,11 @@ img{display:block}
 
   /* marquee (mobile) */
   .m-marquee{overflow:hidden;margin:26px -22px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-  .m-marquee .row{display:flex;gap:16px;width:max-content;align-items:center;animation:marqueeMove 26s linear infinite}
+  /* one group = 5 cards*132 + 5 gaps*16 = 740px -> seamless loop */
+  .m-marquee .row{display:flex;gap:16px;width:max-content;align-items:center;--shift:740px;animation:marqueeMove 22s linear infinite}
   .m-mcard{width:132px;height:132px;border-radius:22px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
     background:linear-gradient(120deg,rgba(20,30,54,.55),rgba(10,19,36,.35));border:1px solid rgba(255,255,255,.06)}
-  .m-mcard img{max-width:62%;max-height:42%;object-fit:contain;opacity:.92}
+  .m-mcard img{width:auto;height:auto;max-width:88px;max-height:30px;object-fit:contain;opacity:.9}
 
   /* contact form (mobile) */
   .m-form{background:#fff;border-radius:18px;padding:26px 22px;margin-top:6px}
