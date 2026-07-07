@@ -14,8 +14,18 @@
       <a href="index.html" class="abs tenor" style="left:136px;top:66px;font-size:18px;color:#b8b8b8;letter-spacing:-0.27px;z-index:51;line-height:normal">Digital products designers</a>
       <a href="projekty.html" class="abs dm nav-link ${active==='projekty'?'active':''}" style="left:1135px;top:52px;font-size:20px;color:#fff;letter-spacing:-1px;z-index:51;line-height:normal">Projekty</a>
       <a href="o-nas.html" class="abs dm nav-link ${active==='onas'?'active':''}" style="left:1270px;top:52px;font-size:20px;color:#fff;letter-spacing:-1px;z-index:51;line-height:normal">O nás</a>
-      <div class="abs" style="left:1360px;top:44px;width:77px;height:45px;border:1px solid #fff;border-radius:30px;z-index:51"></div>
-      <div class="abs dm" style="left:1386px;top:55px;font-size:18px;font-weight:500;color:#fff;letter-spacing:-0.9px;z-index:52;line-height:normal">SK</div>
+      <div class="abs lang" id="langSel" style="left:1360px;top:44px;z-index:60">
+        <button class="lang-btn dm" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="lang-code">SK</span>
+          <svg class="lang-arw" width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1.5 5.5 5.5 10 1.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-menu" role="listbox">
+          <button role="option" data-lang="SK" class="on"><span>Slovenčina</span><b>SK</b></button>
+          <button role="option" data-lang="EN"><span>English</span><b>EN</b></button>
+          <button role="option" data-lang="NL"><span>Nederlands</span><b>NL</b></button>
+          <button role="option" data-lang="DE"><span>Deutsch</span><b>DE</b></button>
+        </div>
+      </div>
       <a href="index.html#kontakt" class="abs btn-white nav-cta" style="left:1466px;top:45px;width:200px;height:45px;background:#fff;border-radius:30px;z-index:51"></a>
       <a href="index.html#kontakt" class="abs dm nav-cta" style="left:1498px;top:54px;font-size:20px;font-weight:600;color:#000;letter-spacing:-1px;z-index:52;line-height:normal">Kontaktujte nás</a>
   `;
@@ -25,6 +35,41 @@
   window.addEventListener('scroll', function () {
     topnav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
+
+  /* ---------- language dropdown ---------- */
+  (function () {
+    const sel = topnav.querySelector('#langSel');
+    if (!sel) return;
+    const btn = sel.querySelector('.lang-btn');
+    const code = sel.querySelector('.lang-code');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const open = sel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    sel.querySelectorAll('.lang-menu button').forEach(function (opt) {
+      opt.addEventListener('click', function (e) {
+        e.stopPropagation();
+        sel.querySelectorAll('.lang-menu button').forEach(function (o) { o.classList.remove('on'); });
+        opt.classList.add('on');
+        code.textContent = opt.getAttribute('data-lang');
+        sel.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        setLang(opt.getAttribute('data-lang'));
+      });
+    });
+    document.addEventListener('click', function () { sel.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') sel.classList.remove('open'); });
+  })();
+
+  function setLang(lang) {
+    // sync mobile switch + persist choice (UI-only; content stays SK)
+    document.querySelectorAll('.mnav-langs button').forEach(function (b) {
+      b.classList.toggle('on', b.getAttribute('data-lang') === lang);
+    });
+    const c = topnav && topnav.querySelector('.lang-code'); if (c) c.textContent = lang;
+    document.documentElement.setAttribute('data-lang', lang);
+  }
 
   /* ---------- mobile navbar + overlay menu ---------- */
   if (!document.getElementById('mnav')) {
@@ -38,24 +83,33 @@
       <a href="o-nas.html" class="${active==='onas'?'on':''}">O nás</a>
       <a href="ochrana-sukromia.html">Ochrana súkromia</a>
       <a href="pravidla-pouzivania.html">Pravidlá používania</a>
-      <a href="index.html#mkontakt" class="cta">Kontaktujte nás</a>`;
+      <a href="index.html#mkontakt" class="cta">Kontaktujte nás</a>
+      <div class="mnav-langs">
+        <button data-lang="SK" class="on">SK</button>
+        <button data-lang="EN">EN</button>
+        <button data-lang="NL">NL</button>
+        <button data-lang="DE">DE</button>
+      </div>`;
     document.body.appendChild(mn); document.body.appendChild(mo);
     mn.querySelector('#mburger').addEventListener('click', function () { document.body.classList.toggle('menu-open'); });
     mo.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { document.body.classList.remove('menu-open'); }); });
+    mo.querySelectorAll('.mnav-langs button').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+    });
   }
 
   /* ---------- mobile contact + footer ---------- */
   const mf = document.getElementById('mfooter');
   if (mf) {
     mf.innerHTML = `
-      <div class="m-form">
+      <div class="m-form" id="mkontakt">
         <h3>Máte projekt na mysli?</h3>
         <label>Celé meno/spoločnosť</label><input type="text" placeholder="Vaše meno/spoločnosť">
         <label>Emailová adresa</label><input type="email" placeholder="peknyden@gmail.com">
         <label>Popis projektu/správa</label><input type="text" placeholder="Napíšte krátky popis projektu.">
         <button class="btn-submit">Odoslať</button>
       </div>
-      <div class="m-connect" id="mkontakt">
+      <div class="m-connect">
         <div class="big">Spojme sa<br>k vášmu <span class="m-grad">projektu</span></div>
         <div class="info">+421911657234<br>natalie@fondrestudio.com</div>
         <div class="socials"><a href="https://linkedin.com" target="_blank">Linked In</a><a href="https://x.com" target="_blank">X.com</a><a href="https://behance.net" target="_blank">Behancé</a></div>
@@ -156,12 +210,35 @@
   /* ---------- scale to fit ---------- */
   function fit() {
     const s = window.innerWidth / DESIGN_W;
+    const curH = parseInt(stage.getAttribute('data-h'), 10) || H;
     stage.style.transform = 'scale(' + s + ')';
-    frame.style.height = (H * s) + 'px';
+    stage.style.height = curH + 'px';
+    frame.style.height = (curH * s) + 'px';
     if (topnav) topnav.style.transform = 'scale(' + s + ')';
   }
+  window.__refit = fit;
   window.addEventListener('resize', fit);
   fit();
+
+  /* ---------- smooth scroll to contact form (handles scaled stage) ---------- */
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('a[href*="#kontakt"], a[href*="#mkontakt"]');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    const onIndex = document.body.getAttribute('data-page') === 'home';
+    // links from other pages should navigate normally to index.html first
+    if (!onIndex && href.indexOf('index.html') === 0) return;
+    e.preventDefault();
+    document.body.classList.remove('menu-open');
+    const isMobile = window.innerWidth < 820;
+    let target;
+    if (isMobile) target = document.querySelector('.m-form');
+    else target = document.getElementById('contactfooter');
+    if (!target) return;
+    const navH = isMobile ? 74 : 130;
+    const y = target.getBoundingClientRect().top + window.scrollY - navH;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  });
 
   /* =================================================================
      INTERACTIVE HERO PARTICLES — dots that fly around the cursor
