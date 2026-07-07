@@ -159,10 +159,10 @@
       ${socialLink('X.com',1121,'https://x.com')}
       ${socialLink('Behancé',1339,'https://behance.net')}
 
+      <!-- solid dark backing: hides the background glow triangle behind the whole footer block (fades in from the section above) -->
+      <div class="abs" style="left:0;top:0;width:1754px;height:1521px;background:linear-gradient(180deg,rgba(5,5,7,0) 0,#050507 170px);pointer-events:none"></div>
       <!-- light footer band -->
       <div class="abs" style="left:0;top:845px;width:1754px;height:505px;background:#fcfcfc"></div>
-      <!-- solid bottom strip: hides the background glow so the page ends cleanly under the footer -->
-      <div class="abs" style="left:0;top:1349px;width:1754px;height:240px;background:#050505"></div>
       <div class="abs tenor" style="left:133px;top:1047px;font-size:72.818px;color:#080d1d;letter-spacing:-3.6409px;line-height:normal">Fondré Studio<span style="font-size:24px;vertical-align:super">©</span></div>
       <div class="abs tenor" style="left:137px;top:1119.82px;font-size:36.409px;color:#b8b8b8;letter-spacing:-0.5461px;line-height:normal">Digital products designers</div>
 
@@ -284,6 +284,21 @@
     const y = target.getBoundingClientRect().top + window.scrollY - navH;
     window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   });
+
+  /* ---------- arriving with #kontakt in the URL (from another page): land on the form correctly ---------- */
+  function scrollToContactNow() {
+    const isMobile = window.innerWidth < 820;
+    const target = isMobile ? document.querySelector('.m-form') : document.getElementById('contactfooter');
+    if (!target) return;
+    const navH = isMobile ? 74 : 130;
+    const y = target.getBoundingClientRect().top + window.scrollY - navH;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+  }
+  if (location.hash === '#kontakt' || location.hash === '#mkontakt') {
+    scrollToContactNow();
+    setTimeout(scrollToContactNow, 80);
+    window.addEventListener('load', function () { setTimeout(scrollToContactNow, 140); });
+  }
 
   /* =================================================================
      INTERACTIVE HERO PARTICLES — dots that fly around the cursor
