@@ -307,10 +307,12 @@
         hx, hy, x: hx, y: hy,
         vx: 0, vy: 0,
         r: Math.random() * 1.35 + 0.7,       // a touch bigger
-        base: Math.random() * 0.13 + 0.05,   // lower, subtler opacity
+        base: Math.random() * 0.16 + 0.09,   // subtle but visible at rest
         tw: Math.random() * Math.PI * 2,
         tws: Math.random() * 0.02 + 0.006,
-        ph: Math.random() * Math.PI * 2
+        ph: Math.random() * Math.PI * 2,
+        amp: Math.random() * 11 + 7,         // idle float distance
+        sp: Math.random() * 0.004 + 0.0022   // idle float speed
       });
     }
 
@@ -338,9 +340,9 @@
       ctx.clearRect(0, 0, cw, ch);
       for (let i = 0; i < parts.length; i++) {
         const p = parts[i];
-        // gentle idle drift around home
-        const dx = Math.cos(t * 0.004 + p.ph) * 6;
-        const dy = Math.sin(t * 0.005 + p.ph) * 6;
+        // continuous gentle idle float (always moving, even before hover)
+        const dx = Math.cos(t * p.sp + p.ph) * p.amp;
+        const dy = Math.sin(t * p.sp * 1.35 + p.ph) * p.amp;
         const tx = p.hx + dx, ty = p.hy + dy;
 
         // repulsion from cursor -> "fly around"

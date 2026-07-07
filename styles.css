@@ -116,11 +116,15 @@ img{display:block}
 /* one group = 5 cards*226 + 5 gaps*38 = 1320px -> seamless loop */
 .marquee .row{display:flex;gap:38px;width:max-content;align-items:center;height:226px;padding-left:30px;--shift:1320px;animation:marqueeMove 26s linear infinite}
 .marquee:hover .row{animation-play-state:paused}
-.marquee-card{width:226px;height:226px;border-radius:34px;
-  background:linear-gradient(180deg,#141419 0%,#0b0b0f 100%);
-  border:1px solid rgba(255,255,255,.05);
-  box-shadow:0 26px 44px -14px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.04);
-  display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+/* liquid-glass card: near-black fill, edge highlight only at top-left + bottom-right */
+.marquee-card{position:relative;width:226px;height:226px;border-radius:34px;flex:0 0 auto;
+  background:linear-gradient(150deg,rgba(255,255,255,.045),rgba(255,255,255,.006) 42%);
+  backdrop-filter:blur(7px) saturate(120%);-webkit-backdrop-filter:blur(7px) saturate(120%);
+  display:flex;align-items:center;justify-content:center;overflow:hidden}
+.marquee-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.6) 0%,rgba(255,255,255,0) 27%,rgba(255,255,255,0) 73%,rgba(255,255,255,.42) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
 /* normalize every logo to the same optical height */
 .marquee-card img{width:auto;height:auto;max-width:150px;max-height:47px;object-fit:contain;opacity:.9}
 @keyframes marqueeMove{from{transform:translateX(0)}to{transform:translateX(calc(var(--shift,1320px) * -1))}}
@@ -244,8 +248,12 @@ img{display:block}
   .m-marquee{overflow:hidden;margin:26px -22px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
   /* one group = 5 cards*132 + 5 gaps*16 = 740px -> seamless loop */
   .m-marquee .row{display:flex;gap:16px;width:max-content;align-items:center;--shift:740px;animation:marqueeMove 22s linear infinite}
-  .m-mcard{width:132px;height:132px;border-radius:22px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(120deg,rgba(20,30,54,.55),rgba(10,19,36,.35));border:1px solid rgba(255,255,255,.06)}
+  .m-mcard{position:relative;width:132px;height:132px;border-radius:22px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    background:linear-gradient(150deg,rgba(255,255,255,.045),rgba(255,255,255,.006) 42%);backdrop-filter:blur(7px) saturate(120%);-webkit-backdrop-filter:blur(7px) saturate(120%)}
+  .m-mcard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+    background:linear-gradient(135deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 27%,rgba(255,255,255,0) 73%,rgba(255,255,255,.4) 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+    mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
   .m-mcard img{width:auto;height:auto;max-width:88px;max-height:30px;object-fit:contain;opacity:.9}
 
   /* contact form (mobile) */
