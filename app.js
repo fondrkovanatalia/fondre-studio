@@ -6,11 +6,9 @@
   const H = parseInt(stage.getAttribute('data-h'), 10);
   stage.style.height = H + 'px';
 
-  /* ---------- inject navbar ---------- */
+  /* ---------- inject sticky navbar (fixed, scaled to match stage) ---------- */
   const active = document.body.getAttribute('data-page'); // 'home' | 'projekty' | 'onas'
-  const navHost = document.getElementById('navbar');
-  if (navHost) {
-    navHost.innerHTML = `
+  const navHTML = `
       <div class="nav-bar"></div>
       <a href="index.html" class="abs tenor" style="left:134px;top:30px;font-size:36px;color:#fdfdfd;letter-spacing:-1.8px;z-index:51;line-height:normal">Fondré Studio</a>
       <a href="index.html" class="abs tenor" style="left:136px;top:66px;font-size:18px;color:#b8b8b8;letter-spacing:-0.27px;z-index:51;line-height:normal">Digital products designers</a>
@@ -20,7 +18,58 @@
       <div class="abs dm" style="left:1386px;top:55px;font-size:18px;font-weight:500;color:#fff;letter-spacing:-0.9px;z-index:52;line-height:normal">SK</div>
       <a href="index.html#kontakt" class="abs btn-white nav-cta" style="left:1466px;top:45px;width:200px;height:45px;background:#fff;border-radius:30px;z-index:51"></a>
       <a href="index.html#kontakt" class="abs dm nav-cta" style="left:1498px;top:54px;font-size:20px;font-weight:600;color:#000;letter-spacing:-1px;z-index:52;line-height:normal">Kontaktujte nás</a>
-    `;
+  `;
+  let topnav = document.getElementById('topnav');
+  if (!topnav) { topnav = document.createElement('div'); topnav.id = 'topnav'; document.body.appendChild(topnav); }
+  topnav.innerHTML = navHTML;
+  window.addEventListener('scroll', function () {
+    topnav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ---------- mobile navbar + overlay menu ---------- */
+  if (!document.getElementById('mnav')) {
+    const mn = document.createElement('div'); mn.id = 'mnav';
+    mn.innerHTML = `<a class="mnav-logo" href="index.html"><b>Fondré Studio</b><small>Digital products designers</small></a>
+      <button class="mnav-burger" id="mburger" aria-label="Menu"><span></span><span></span><span></span></button>`;
+    const mo = document.createElement('div'); mo.id = 'mnav-overlay';
+    mo.innerHTML = `
+      <a href="index.html" class="${active==='home'?'on':''}">Domov</a>
+      <a href="projekty.html" class="${active==='projekty'?'on':''}">Projekty</a>
+      <a href="o-nas.html" class="${active==='onas'?'on':''}">O nás</a>
+      <a href="ochrana-sukromia.html">Ochrana súkromia</a>
+      <a href="pravidla-pouzivania.html">Pravidlá používania</a>
+      <a href="index.html#mkontakt" class="cta">Kontaktujte nás</a>`;
+    document.body.appendChild(mn); document.body.appendChild(mo);
+    mn.querySelector('#mburger').addEventListener('click', function () { document.body.classList.toggle('menu-open'); });
+    mo.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { document.body.classList.remove('menu-open'); }); });
+  }
+
+  /* ---------- mobile contact + footer ---------- */
+  const mf = document.getElementById('mfooter');
+  if (mf) {
+    mf.innerHTML = `
+      <div class="m-form">
+        <h3>Máte projekt na mysli?</h3>
+        <label>Celé meno/spoločnosť</label><input type="text" placeholder="Vaše meno/spoločnosť">
+        <label>Emailová adresa</label><input type="email" placeholder="peknyden@gmail.com">
+        <label>Popis projektu/správa</label><input type="text" placeholder="Napíšte krátky popis projektu.">
+        <button class="btn-submit">Odoslať</button>
+      </div>
+      <div class="m-connect" id="mkontakt">
+        <div class="big">Spojme sa<br>k vášmu <span class="m-grad">projektu</span></div>
+        <div class="info">+421911657234<br>natalie@fondrestudio.com</div>
+        <div class="socials"><a href="https://linkedin.com" target="_blank">Linked In</a><a href="https://x.com" target="_blank">X.com</a><a href="https://behance.net" target="_blank">Behancé</a></div>
+      </div>
+      <div class="m-foot">
+        <div class="brand">Fondré Studio<small>©</small></div>
+        <div class="tag">Digital products designers</div>
+        <div class="links">
+          <a href="index.html">Domov</a><a href="ochrana-sukromia.html">Ochrana súkromia</a>
+          <a href="o-nas.html">O nás</a><a href="pravidla-pouzivania.html">Pravidlá používania</a>
+          <a href="projekty.html">Projekty</a><a href="index.html#mkontakt">Kontaktujte nás</a>
+        </div>
+      </div>
+      <div class="m-copy">© 2026 Created by Fondré Studio, All rights reserved.</div>`;
   }
 
   /* ---------- inject shared Contact + Footer block (bottom-anchored) ---------- */
@@ -107,6 +156,7 @@
     const s = window.innerWidth / DESIGN_W;
     stage.style.transform = 'scale(' + s + ')';
     frame.style.height = (H * s) + 'px';
+    if (topnav) topnav.style.transform = 'scale(' + s + ')';
   }
   window.addEventListener('resize', fit);
   fit();
