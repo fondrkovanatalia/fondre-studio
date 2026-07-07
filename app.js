@@ -104,10 +104,11 @@
     mf.innerHTML = `
       <div class="m-form" id="mkontakt">
         <h3>Máte projekt na mysli?</h3>
-        <label>Celé meno/spoločnosť</label><input type="text" placeholder="Vaše meno/spoločnosť">
-        <label>Emailová adresa</label><input type="email" placeholder="peknyden@gmail.com">
-        <label>Popis projektu/správa</label><input type="text" placeholder="Napíšte krátky popis projektu.">
+        <label>Celé meno/spoločnosť</label><input class="field" data-field="name" type="text" placeholder="Vaše meno/spoločnosť">
+        <label>Emailová adresa</label><input class="field" data-field="email" type="email" placeholder="peknyden@gmail.com">
+        <label>Popis projektu/správa</label><input class="field" data-field="msg" type="text" placeholder="Napíšte krátky popis projektu.">
         <button class="btn-submit">Odoslať</button>
+        <div class="form-status"></div>
       </div>
       <div class="m-connect">
         <div class="big">Spojme sa<br>k vášmu <span class="m-grad">projektu</span></div>
@@ -138,15 +139,16 @@
       <div class="abs dm" style="left:266px;top:67px;width:410px;font-size:34px;font-weight:600;color:#0a0a0a;letter-spacing:-1.7px;line-height:normal">Máte projekt na mysli?</div>
 
       <div class="abs dm" style="left:266px;top:155px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px;line-height:normal">Celé meno/spoločnosť</div>
-      <input class="field abs dm" placeholder="Vaše meno/spoločnosť" style="left:264px;top:190px;width:467px;height:59px;background:#f5f5f5;border:none;border-radius:8px;padding:0 17px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px" />
+      <input class="field abs dm" data-field="name" placeholder="Vaše meno/spoločnosť" style="left:264px;top:190px;width:467px;height:59px;background:#f5f5f5;border:none;border-radius:8px;padding:0 17px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px" />
 
       <div class="abs dm" style="left:263px;top:275px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px;line-height:normal">Emailová adresa</div>
-      <input class="field abs dm" placeholder="peknyden@gmail.com" style="left:264px;top:310px;width:467px;height:59px;background:#f5f5f5;border:none;border-radius:8px;padding:0 17px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px" />
+      <input class="field abs dm" data-field="email" type="email" placeholder="peknyden@gmail.com" style="left:264px;top:310px;width:467px;height:59px;background:#f5f5f5;border:none;border-radius:8px;padding:0 17px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px" />
 
       <div class="abs dm" style="left:266px;top:394px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px;line-height:normal">Popis projektu/správa</div>
-      <input class="field abs dm" placeholder="Napíšte krátky popis projektu." style="left:264px;top:430px;width:467px;height:59px;background:#f5f5f5;border:none;border-radius:8px;padding:0 17px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px" />
+      <input class="field abs dm" data-field="msg" placeholder="Napíšte krátky popis projektu." style="left:264px;top:430px;width:467px;height:59px;background:#f5f5f5;border:none;border-radius:8px;padding:0 17px;font-size:17px;color:#0a0a0a;letter-spacing:-0.85px" />
 
       <button class="abs dm btn-submit" style="left:264px;top:513px;width:467px;height:59px;background:#0a1324;border:none;border-radius:29.5px;color:#fff;font-size:17px;font-weight:600;letter-spacing:-0.85px;cursor:pointer">Odoslať</button>
+      <div class="form-status abs dm" style="left:266px;top:583px;width:467px;font-size:13px;letter-spacing:-0.2px;line-height:1.3"></div>
 
       <!-- contact info -->
       <div class="abs tenor" style="left:910px;top:28px;width:610px;font-size:68px;color:#fff;letter-spacing:-2.25px;line-height:normal">Spojme sa<br>k vášmu <span class="iserif">projektu</span></div>
@@ -186,13 +188,55 @@
     return `<a href="${href}" class="abs dm foot-link" style="left:${x}px;top:${y}px;font-size:18px;font-weight:500;color:#080d1d;letter-spacing:-0.9px;line-height:normal">${label}</a>`;
   }
 
-  /* ---------- form submit (demo) ---------- */
+  /* ---------- contact form: validation + states ---------- */
+  const MSG = {
+    required: 'Toto pole je povinné.',
+    email: 'Zadajte platnú emailovú adresu.',
+    fix: 'Skontrolujte, prosím, zvýraznené polia.',
+    ok: 'Ďakujeme! Ozveme sa vám čo najskôr.',
+    sending: 'Odosielam…'
+  };
+  function emailValid(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }
+  document.addEventListener('submit', function (e) { e.preventDefault(); });
   document.addEventListener('click', function (e) {
     const b = e.target.closest('.btn-submit');
     if (!b) return;
-    b.textContent = 'Odoslané ✓';
-    b.style.background = '#12331d';
-    setTimeout(() => { b.textContent = 'Odoslať'; b.style.background = '#0a1324'; }, 2200);
+    e.preventDefault();
+    const form = b.closest('.m-form') || b.closest('#contactfooter') || b.parentElement;
+    if (!form) return;
+    const status = form.querySelector('.form-status');
+    const fields = form.querySelectorAll('.field[data-field]');
+    let firstErr = null;
+    fields.forEach(function (f) {
+      f.classList.remove('field-err');
+      const key = f.getAttribute('data-field');
+      const v = (f.value || '').trim();
+      let bad = false;
+      if (key === 'name' && !v) bad = true;
+      if (key === 'email' && !emailValid(v)) bad = true;
+      if (bad) { f.classList.add('field-err'); if (!firstErr) firstErr = f; }
+    });
+    if (status) { status.classList.remove('ok', 'err'); }
+    if (firstErr) {
+      if (status) { status.textContent = MSG.fix; status.classList.add('err'); }
+      firstErr.focus();
+      return;
+    }
+    // success
+    b.disabled = true;
+    b.textContent = MSG.sending;
+    if (status) { status.textContent = ''; }
+    setTimeout(function () {
+      b.disabled = false;
+      b.textContent = 'Odoslať';
+      fields.forEach(function (f) { f.value = ''; f.classList.remove('field-err'); });
+      if (status) { status.textContent = MSG.ok; status.classList.add('ok'); }
+    }, 900);
+  });
+  // clear a field's error state as the user types
+  document.addEventListener('input', function (e) {
+    const f = e.target.closest('.field[data-field]');
+    if (f) f.classList.remove('field-err');
   });
 
   /* ---------- carousels ---------- */

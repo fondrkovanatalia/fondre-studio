@@ -78,6 +78,12 @@ img{display:block}
 .reflow{transition:left .6s cubic-bezier(.22,1,.36,1),top .6s cubic-bezier(.22,1,.36,1),width .6s cubic-bezier(.22,1,.36,1),height .6s cubic-bezier(.22,1,.36,1),opacity .35s ease}
 .field{transition:box-shadow .2s ease, background .2s ease}
 .field:focus{outline:none;background:#fff;box-shadow:0 0 0 2px #0a1324 inset}
+.field-err{box-shadow:0 0 0 1.5px #d0574f inset !important}
+.field-err:focus{box-shadow:0 0 0 2px #d0574f inset !important}
+.form-status{min-height:16px;color:#8a8f99}
+.form-status.err{color:#c0473f}
+.form-status.ok{color:#1f8a5b}
+.btn-submit:disabled{opacity:.7;cursor:default}
 .chip{transition:transform .2s ease, background .2s ease, color .2s ease}
 .chip:hover{transform:translateY(-2px)}
 .foot-link{transition:opacity .2s ease}
@@ -248,6 +254,7 @@ img{display:block}
   .m-form label{display:block;font-family:'DM Sans',sans-serif;font-size:14px;color:#0a0a0a;margin:14px 0 7px}
   .m-form input{width:100%;height:52px;background:#f5f5f5;border:none;border-radius:8px;padding:0 15px;font-family:'DM Sans',sans-serif;font-size:15px;color:#0a0a0a}
   .m-form button{width:100%;height:54px;background:#0a1324;color:#fff;border:none;border-radius:27px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:16px;margin-top:22px;cursor:pointer}
+  .m-form .form-status{margin-top:14px;font-family:'DM Sans',sans-serif;font-size:13px;text-align:center}
   .m-connect{margin-top:40px}
   .m-connect .big{font-family:'Tenor Sans',serif;font-size:clamp(30px,9vw,44px);color:#fff;letter-spacing:-1.6px;line-height:1.05}
   .m-connect .info{font-family:'Tenor Sans',serif;font-size:22px;color:#fff;margin-top:22px;line-height:1.5}
