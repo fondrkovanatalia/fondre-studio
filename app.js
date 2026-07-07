@@ -104,6 +104,8 @@
 
       <!-- light footer band -->
       <div class="abs" style="left:0;top:845px;width:1754px;height:505px;background:#fcfcfc"></div>
+      <!-- solid bottom strip: hides the background glow so the page ends cleanly under the footer -->
+      <div class="abs" style="left:0;top:1349px;width:1754px;height:240px;background:#050505"></div>
       <div class="abs tenor" style="left:133px;top:1047px;font-size:72.818px;color:#080d1d;letter-spacing:-3.6409px;line-height:normal">Fondré Studio<span style="font-size:24px;vertical-align:super">©</span></div>
       <div class="abs tenor" style="left:137px;top:1119.82px;font-size:36.409px;color:#b8b8b8;letter-spacing:-0.5461px;line-height:normal">Digital products designers</div>
 
