@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon/copyright" clip-path="url(#clip0_0_53)">
+<path id="Vector" d="M8.5 15.5833C12.412 15.5833 15.5833 12.412 15.5833 8.5C15.5833 4.58798 12.412 1.41667 8.5 1.41667C4.58798 1.41667 1.41667 4.58798 1.41667 8.5C1.41667 12.412 4.58798 15.5833 8.5 15.5833Z" stroke="var(--stroke-0, black)" stroke-width="1.41667" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M10.6248 6.62575C10.2442 6.19416 9.74107 5.88874 9.18253 5.7501C8.62399 5.61147 8.03647 5.64621 7.49816 5.8497C6.95984 6.05319 6.49626 6.41578 6.16908 6.88922C5.84191 7.36266 5.66667 7.92451 5.66667 8.5C5.66667 9.07549 5.84191 9.63734 6.16908 10.1108C6.49626 10.5842 6.95984 10.9468 7.49816 11.1503C8.03647 11.3538 8.62399 11.3885 9.18253 11.2499C9.74107 11.1113 10.2442 10.8058 10.6248 10.3743" stroke="var(--stroke-0, black)" stroke-width="1.41667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_53">
+<rect width="17" height="17" fill="white"/>
+</clipPath>
+</defs>
+</svg>

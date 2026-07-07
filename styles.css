@@ -1,0 +1,116 @@
+/* ============ Fondré Studio — pixel-perfect rebuild of Figma design ============ */
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#050505;color:#fff;overflow-x:hidden}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+img{display:block}
+
+/* ---- scale-to-fit viewport wrapper ---- */
+#frame{position:relative;width:100%;overflow:hidden}
+.stage{position:absolute;top:0;left:0;width:1754px;transform-origin:top left;background:#050505}
+
+/* ---- typography helpers ---- */
+.tenor{font-family:'Tenor Sans',serif;font-weight:400}
+.dm{font-family:'DM Sans',sans-serif}
+.inter{font-family:'Inter',sans-serif}
+.iserif{font-family:'Instrument Serif',serif;font-style:italic}
+.abs{position:absolute}
+.nowrap{white-space:nowrap}
+.pre{white-space:pre-wrap}
+/* underlined gradient words */
+.grad{
+  display:inline-block;vertical-align:baseline;
+  background:linear-gradient(90deg,#fdfdfd 7.13%,#b3d6ed 50.87%,#101b3f 98.67%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-family:'Instrument Serif',serif;font-style:italic;
+  text-decoration:underline;text-decoration-thickness:from-font;text-underline-offset:2px;
+}
+
+/* ---- background particle svg layer ---- */
+.bg-particles{position:absolute;pointer-events:none;z-index:0}
+
+/* ---- interactive hero particle canvas ---- */
+#hero-particles{position:absolute;left:0;top:0;z-index:1;pointer-events:none}
+
+/* keep hero content above particles */
+.hero-layer{z-index:2}
+
+/* ---- navbar ---- */
+/* liquid glass floating menu */
+.nav-bar{position:absolute;left:24px;top:20px;width:1706px;height:74px;border-radius:37px;z-index:50;overflow:hidden;
+  background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.03) 45%,rgba(255,255,255,.08));
+  backdrop-filter:blur(26px) saturate(185%);-webkit-backdrop-filter:blur(26px) saturate(185%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.4),inset 0 -1px 1px rgba(255,255,255,.06),inset 0 0 22px rgba(179,214,237,.06),0 14px 42px rgba(0,0,0,.38);}
+.nav-bar::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 22%,rgba(255,255,255,.20) 42%,rgba(255,255,255,0) 58%);
+  animation:navSheen 7.5s ease-in-out infinite;}
+.nav-bar::after{content:"";position:absolute;left:0;right:0;top:0;height:50%;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.10),transparent);border-radius:37px 37px 0 0;}
+@keyframes navSheen{0%,100%{transform:translateX(-45%)}50%{transform:translateX(45%)}}
+.nav-cta{transition:transform .25s ease, box-shadow .25s ease}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(255,255,255,.18)}
+.nav-link{transition:opacity .2s ease}
+.nav-link:hover{opacity:.65}
+.nav-link.active{text-decoration:underline;text-underline-position:from-font}
+
+/* ---- generic hover niceties ---- */
+.btn-white{transition:transform .25s ease, box-shadow .25s ease}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,255,255,.20)}
+.proj-media{overflow:hidden}
+.proj-media img{transition:transform .9s cubic-bezier(.22,1,.36,1)}
+.proj-card:hover .proj-media img{transform:scale(1.045)}
+.field{transition:box-shadow .2s ease, background .2s ease}
+.field:focus{outline:none;background:#fff;box-shadow:0 0 0 2px #0a1324 inset}
+.chip{transition:transform .2s ease, background .2s ease, color .2s ease}
+.chip:hover{transform:translateY(-2px)}
+.foot-link{transition:opacity .2s ease}
+.foot-link:hover{opacity:.6}
+.social:hover{opacity:.7}
+
+/* ---- reveal on scroll ---- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ================= CAROUSEL ================= */
+.carousel{overflow:hidden;position:absolute;background:#0d0d12}
+.carousel .track{position:absolute;left:0;top:0;height:100%;display:flex;animation:slideTrack 11.3s infinite}
+.carousel .slide{height:100%;flex:0 0 auto}
+.carousel .slide img{width:100%;height:100%;object-fit:cover}
+@keyframes slideTrack{
+  0%{transform:translateX(0)}
+  30.973%{transform:translateX(0);animation-timing-function:cubic-bezier(.76,0,.24,1)}
+  34.513%{transform:translateX(calc(var(--sw) * -1))}
+  65.487%{transform:translateX(calc(var(--sw) * -1));animation-timing-function:cubic-bezier(.76,0,.24,1)}
+  69.027%{transform:translateX(calc(var(--sw) * -2))}
+  100%{transform:translateX(calc(var(--sw) * -2))}
+}
+
+/* ================= MARQUEE ================= */
+.marquee{position:absolute;overflow:hidden;display:flex;align-items:center}
+.marquee .row{display:flex;gap:38px;width:max-content;align-items:center;height:226px;padding-left:30px;animation:marqueeMove 30s linear infinite}
+.marquee:hover .row{animation-play-state:paused}
+.marquee-card{width:226px;height:226px;border-radius:30px;
+  background:linear-gradient(120deg,rgba(20,30,54,.55),rgba(10,19,36,.35));
+  border:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.marquee-card img{max-width:62%;max-height:44%;object-fit:contain;opacity:.92}
+/* one group = 6 cards*226 + 6 gaps*38 = 1584px -> seamless loop */
+@keyframes marqueeMove{from{transform:translateX(0)}to{transform:translateX(-1584px)}}
+
+/* legal pages (Ochrana súkromia / Pravidlá používania) */
+.legal-body h2{font-family:'Tenor Sans',serif;font-size:30px;color:#fff;letter-spacing:-1.2px;margin:40px 0 14px;line-height:1.15}
+.legal-body h2:first-child{margin-top:0}
+.legal-body p{font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:#d9dada;line-height:1.62;margin-bottom:12px;letter-spacing:-0.2px}
+.legal-body a.inline{color:#b3d6ed;text-decoration:underline}
+.legal-body ul{margin:0 0 14px 22px}
+.legal-body li{font-family:'DM Sans',sans-serif;font-weight:300;font-size:18px;color:#d9dada;line-height:1.62;margin-bottom:7px;letter-spacing:-0.2px}
+
+/* skill / tool tags */
+.tag{display:inline-flex;align-items:center;padding:8px 16px;border:1px solid rgba(255,255,255,.2);border-radius:20px;font-family:'DM Sans',sans-serif;font-size:16px;color:#fff;white-space:nowrap;transition:background .2s ease,border-color .2s ease}
+.tag:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
+
+/* contact/footer injected container */
+#contactfooter,#navbar{position:absolute;left:0;top:0;width:1754px}
