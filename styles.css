@@ -200,7 +200,7 @@ img{display:block}
   #mnav-overlay a.on{color:#b3d6ed}
   #mnav-overlay a.cta{margin-top:22px;background:#fff;color:#0a1324;border-radius:30px;text-align:center;font-family:'DM Sans',sans-serif;font-weight:600;font-size:18px;padding:16px;border:none}
   .mnav-langs{display:flex;gap:10px;margin-top:26px}
-  .mnav-langs button{flex:1;padding:12px 0;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;border-radius:12px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;cursor:pointer}
+  .mnav-langs button{flex:1;padding:12px 0;border:1px solid rgba(255,255,255,.5);background:transparent;color:#fff;border-radius:30px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;cursor:pointer;transition:background .2s ease,border-color .2s ease}
   .mnav-langs button.on{background:#fff;color:#0a1324;border-color:#fff}
 
   /* hero */
