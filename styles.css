@@ -161,9 +161,10 @@ img{display:block}
   #mobile{display:block;position:relative;overflow:hidden;background:#080d1d}
   body{overflow-x:hidden;background:#080d1d}
 
-  /* blue hero glow (same feel as desktop) */
-  #mobile::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:170%;height:640px;
-    background:radial-gradient(58% 60% at 50% 32%,rgba(34,58,128,.55),rgba(16,27,63,.22) 45%,transparent 72%);pointer-events:none;z-index:0}
+  /* identical desktop background: same bg_particles.svg, same crop scaled to viewport width
+     (desktop stage is 1754px wide → 100/1754 = 0.05701vw per stage-px) */
+  .m-bg-particles{position:absolute;z-index:0;pointer-events:none;max-width:none;
+    width:823.94vw;height:823.94vw;left:-364.95vw;top:-70.70vw}
   /* interactive hero particles (same as desktop) */
   #m-hero-particles{position:absolute;top:0;left:0;width:100%;height:900px;z-index:0;pointer-events:none}
 
