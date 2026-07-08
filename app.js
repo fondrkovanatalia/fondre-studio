@@ -301,88 +301,73 @@
   /* =================================================================
      INTERACTIVE HERO PARTICLES — dots that fly around the cursor
      ================================================================= */
-  const canvas = document.getElementById('hero-particles');
-  if (canvas) {
-    const cw = parseInt(canvas.getAttribute('width'), 10);
-    const ch = parseInt(canvas.getAttribute('height'), 10);
+  function initParticles(canvas, cw, ch) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = cw * dpr; canvas.height = ch * dpr;
     canvas.style.width = cw + 'px'; canvas.style.height = ch + 'px';
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
-    const COUNT = Math.round((cw * ch) / 5200); // higher density (more particles)
+    const COUNT = Math.round((cw * ch) / 5200); // density
     const parts = [];
     for (let i = 0; i < COUNT; i++) {
       const hx = Math.random() * cw;
       const hy = Math.random() * ch;
       parts.push({
-        hx, hy, x: hx, y: hy,
-        vx: 0, vy: 0,
-        r: Math.random() * 1.35 + 0.7,       // a touch bigger
-        base: Math.random() * 0.16 + 0.09,   // subtle but visible at rest
+        hx, hy, x: hx, y: hy, vx: 0, vy: 0,
+        r: Math.random() * 1.35 + 0.7,
+        base: Math.random() * 0.16 + 0.09,
         tw: Math.random() * Math.PI * 2,
         tws: Math.random() * 0.02 + 0.006,
         ph: Math.random() * Math.PI * 2,
-        amp: Math.random() * 11 + 7,         // idle float distance
-        sp: Math.random() * 0.004 + 0.0022   // idle float speed
+        amp: Math.random() * 11 + 7,
+        sp: Math.random() * 0.004 + 0.0022
       });
     }
 
     const mouse = { x: -9999, y: -9999, active: false };
-    const R = 150;          // influence radius (css px within canvas space)
-    const FORCE = 2.6;      // repulsion strength
-
-    function toCanvas(clientX, clientY) {
+    const R = 150, FORCE = 2.6;
+    function setPoint(clientX, clientY) {
       const rect = canvas.getBoundingClientRect();
-      return {
-        x: (clientX - rect.left) * (cw / rect.width),
-        y: (clientY - rect.top) * (ch / rect.height)
-      };
+      if (!rect.width) return;
+      const x = (clientX - rect.left) * (cw / rect.width);
+      const y = (clientY - rect.top) * (ch / rect.height);
+      mouse.x = x; mouse.y = y;
+      mouse.active = x > -40 && x < cw + 40 && y > -40 && y < ch + 40;
     }
-    window.addEventListener('mousemove', function (e) {
-      const p = toCanvas(e.clientX, e.clientY);
-      mouse.x = p.x; mouse.y = p.y;
-      mouse.active = p.x > -40 && p.x < cw + 40 && p.y > -40 && p.y < ch + 40;
-    });
+    window.addEventListener('mousemove', function (e) { setPoint(e.clientX, e.clientY); });
     window.addEventListener('mouseleave', function () { mouse.active = false; mouse.x = -9999; mouse.y = -9999; });
+    window.addEventListener('touchmove', function (e) { if (e.touches[0]) setPoint(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+    window.addEventListener('touchend', function () { mouse.active = false; });
 
     let t = 0;
     function frameLoop() {
       t += 1;
+      if (!canvas.offsetParent && canvas.offsetWidth === 0) { requestAnimationFrame(frameLoop); return; }
       ctx.clearRect(0, 0, cw, ch);
       for (let i = 0; i < parts.length; i++) {
         const p = parts[i];
-        // continuous gentle idle float (always moving, even before hover)
         const dx = Math.cos(t * p.sp + p.ph) * p.amp;
         const dy = Math.sin(t * p.sp * 1.35 + p.ph) * p.amp;
         const tx = p.hx + dx, ty = p.hy + dy;
-
-        // repulsion from cursor -> "fly around"
         if (mouse.active) {
           const mx = p.x - mouse.x, my = p.y - mouse.y;
           const d2 = mx * mx + my * my;
           if (d2 < R * R) {
             const d = Math.sqrt(d2) || 0.001;
             const f = (1 - d / R) * FORCE;
-            // push away + slight tangential swirl so they orbit/fly
             p.vx += (mx / d) * f + (-my / d) * f * 0.5;
             p.vy += (my / d) * f + (mx / d) * f * 0.5;
           }
         }
-        // spring back to drifting home
         p.vx += (tx - p.x) * 0.012;
         p.vy += (ty - p.y) * 0.012;
         p.vx *= 0.9; p.vy *= 0.9;
         p.x += p.vx; p.y += p.vy;
-
-        // twinkle
         p.tw += p.tws;
         const a = p.base + Math.sin(p.tw) * 0.06;
         const speed = Math.min(1, (Math.abs(p.vx) + Math.abs(p.vy)) / 6);
-        // particles brighten slightly only while being pushed by the cursor
         const alpha = Math.max(0.02, a + speed * 0.28);
-
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r + speed * 0.7, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(' + (198 + speed * 57) + ',' + (212 + speed * 34) + ',255,' + alpha + ')';
@@ -392,5 +377,16 @@
       requestAnimationFrame(frameLoop);
     }
     frameLoop();
+  }
+
+  // desktop hero particles
+  const dCanvas = document.getElementById('hero-particles');
+  if (dCanvas && window.innerWidth >= 820) {
+    initParticles(dCanvas, parseInt(dCanvas.getAttribute('width'), 10), parseInt(dCanvas.getAttribute('height'), 10));
+  }
+  // mobile hero particles (same look as desktop)
+  const mCanvas = document.getElementById('m-hero-particles');
+  if (mCanvas && window.innerWidth < 820) {
+    initParticles(mCanvas, window.innerWidth, 900);
   }
 })();
