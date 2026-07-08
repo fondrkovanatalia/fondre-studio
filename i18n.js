@@ -51,6 +51,7 @@
     // ---- home projects ----
     "Projekty na,": { EN: "Projects", DE: "Projekte,", NL: "Projecten" },
     "ktoré sme": { EN: "we are", DE: "auf die wir", NL: "waar we" },
+    "Projekty na, ktoré sme": { EN: "Projects we are", DE: "Projekte, auf die wir", NL: "Projecten waar we" },
     "hrdí": { EN: "proud of", DE: "stolz sind", NL: "trots op zijn" },
     "Produktový dizajn · UX/UI · Dizajnový systém": { EN: "Product design · UX/UI · Design system", DE: "Produktdesign · UX/UI · Designsystem", NL: "Productdesign · UX/UI · Designsysteem" },
     "Webový dizajn · Branding · Audio platforma": { EN: "Web design · Branding · Audio platform", DE: "Webdesign · Branding · Audioplattform", NL: "Webdesign · Branding · Audioplatform" },
@@ -223,6 +224,12 @@
   // apply saved language once the injected nav/footer exist
   window.addEventListener('load', function () {
     var saved; try { saved = localStorage.getItem('lang'); } catch (e) {}
+    // URL override for deep-linkable localized pages / testing: ?lang=DE or #lang=nl
+    var m = (location.search + location.hash).match(/[?#&]lang=([A-Za-z]{2})/i);
+    if (m) {
+      var q = m[1].toUpperCase();
+      if (q === 'SK' || LANGS[q]) { saved = q; try { localStorage.setItem('lang', q); } catch (e) {} }
+    }
     if (saved && saved !== 'SK') {
       window.__i18n(saved);
       var code = document.querySelector('.lang-code'); if (code) code.textContent = saved;
