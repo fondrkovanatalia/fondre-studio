@@ -284,7 +284,7 @@ img{display:block}
   .m-foot{background:#fcfcfc;margin:91px -22px 0;padding:44px 22px 30px;text-align:left}
   .m-foot .brand{display:block;font-family:'Tenor Sans',serif;font-size:34px;color:#080d1d;letter-spacing:-1.6px;white-space:nowrap}
   .m-foot .brand small{font-size:16px;vertical-align:super}
-  .m-foot .tag{font-family:'Tenor Sans',serif;font-size:19px;color:#b8b8b8;margin-top:2px}
+  .m-foot .tag{display:block;padding:0;border:none;font-family:'Tenor Sans',serif;font-size:19px;color:#b8b8b8;margin-top:2px}
   .m-foot .links{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:28px}
   .m-foot .links a{font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;color:#080d1d;text-decoration:none}
   .m-copy{padding:22px;text-align:center;font-family:'Tenor Sans',serif;font-size:13px;color:#adaeb0}
