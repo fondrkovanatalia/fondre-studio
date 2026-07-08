@@ -159,8 +159,6 @@
       ${socialLink('X.com',1121,'https://x.com')}
       ${socialLink('Behancé',1339,'https://behance.net')}
 
-      <!-- solid dark backing: hides the background glow triangle behind the whole footer block (fades in from the section above) -->
-      <div class="abs" style="left:0;top:0;width:1754px;height:1521px;background:linear-gradient(180deg,rgba(5,5,7,0) 0,#050507 170px);pointer-events:none"></div>
       <!-- light footer band -->
       <div class="abs" style="left:0;top:845px;width:1754px;height:505px;background:#fcfcfc"></div>
       <div class="abs tenor" style="left:133px;top:1047px;font-size:72.818px;color:#080d1d;letter-spacing:-3.6409px;line-height:normal">Fondré Studio<span style="font-size:24px;vertical-align:super">©</span></div>

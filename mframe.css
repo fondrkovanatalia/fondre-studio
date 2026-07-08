@@ -1,0 +1,115 @@
+/* ===== Fondré Studio — standalone mobile frames (iPhone 17, 402px) for Figma capture ===== */
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111;display:flex;justify-content:center}
+.mframe{width:402px;position:relative;overflow:hidden;background:#050505;color:#fff;-webkit-font-smoothing:antialiased}
+.mframe::before{content:"";position:absolute;top:-110px;left:50%;transform:translateX(-50%);width:150%;height:520px;
+  background:radial-gradient(60% 60% at 50% 30%,rgba(30,54,120,.45),rgba(16,27,63,.18) 45%,transparent 72%);pointer-events:none;z-index:0}
+.m-wrap{position:relative;z-index:1;padding:0 22px}
+.m-sec{padding:44px 0}
+.m-eyebrow{font-family:'DM Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:1px;color:#b3d6ed;text-transform:uppercase;margin-bottom:14px}
+.m-h1{font-family:'Tenor Sans',serif;font-size:34px;color:#f5f5f5;letter-spacing:-1.6px;line-height:1.06;overflow-wrap:break-word}
+.m-h2{font-family:'Tenor Sans',serif;font-size:29px;color:#fff;letter-spacing:-1.5px;line-height:1.1;overflow-wrap:break-word}
+.m-h3{font-family:'Tenor Sans',serif;font-size:22px;color:#fff;letter-spacing:-1px;overflow-wrap:break-word}
+.m-lead{font-family:'DM Sans',sans-serif;font-weight:300;color:#c9ccd2;font-size:16px;line-height:1.55;margin-top:16px}
+.m-p{font-family:'DM Sans',sans-serif;font-weight:300;color:#d9dada;font-size:15px;line-height:1.6}
+.m-grad{font-family:'Instrument Serif',serif;font-style:italic;text-decoration:underline;text-underline-offset:2px;
+  background:linear-gradient(90deg,#fdfdfd,#b3d6ed 55%,#7f9dc4);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* navbar */
+.mnav{display:flex;height:60px;align-items:center;justify-content:space-between;padding:0 22px;position:relative;z-index:3;
+  background:rgba(7,12,28,.55);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border-bottom:1px solid rgba(255,255,255,.07)}
+.mnav-logo{display:block;line-height:1;text-decoration:none}
+.mnav-logo b{font-family:'Tenor Sans',serif;font-weight:400;font-size:19px;color:#fff;letter-spacing:-1px;display:block}
+.mnav-logo small{font-family:'DM Sans',sans-serif;font-size:10px;color:#b8b8b8}
+.mnav-burger{width:34px;height:34px;background:none;border:none;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:6px}
+.mnav-burger span{display:block;height:2px;width:23px;background:#fff}
+
+/* hero */
+.m-hero{padding-top:40px}
+.m-hero-photo{width:100%;aspect-ratio:709/620;object-fit:cover;border-radius:14px;margin-top:26px;display:block}
+.m-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px 16px;margin-top:32px}
+.m-stat .num{font-family:'Tenor Sans',serif;font-size:36px;color:#fff;letter-spacing:-1.8px;line-height:1}
+.m-stat .lbl{font-family:'DM Sans',sans-serif;font-size:13px;color:#848792;line-height:1.35;margin-top:8px}
+.m-facts{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;margin-top:32px}
+.m-facts .k{font-family:'DM Sans',sans-serif;font-weight:600;font-size:11.5px;color:#b3d6ed;letter-spacing:.5px}
+.m-facts .v{font-family:'DM Sans',sans-serif;font-weight:500;font-size:13.5px;color:#fff;margin-top:6px}
+
+/* project cards */
+.m-proj{margin-top:44px}
+.m-proj:first-of-type{margin-top:28px}
+.m-proj .media{width:100%;border-radius:14px;overflow:hidden;background:#0d0d12;aspect-ratio:16/11}
+.m-proj.tall .media{aspect-ratio:3/4}
+.m-proj .media img{width:100%;height:100%;object-fit:cover;display:block}
+.m-proj .row{display:flex;justify-content:space-between;align-items:baseline;margin-top:13px;gap:12px}
+.m-proj .ttl{font-family:'Tenor Sans',serif;font-size:21px;color:#fff}
+.m-proj .yr{font-family:'DM Sans',sans-serif;font-size:12.5px;color:rgba(255,255,255,.5);white-space:nowrap}
+.m-proj .sub{font-family:'DM Sans',sans-serif;font-weight:300;font-size:13.5px;color:rgba(255,255,255,.55);margin-top:3px}
+
+/* slider */
+.m-slider{display:flex;gap:12px;overflow-x:auto;margin:20px -22px 0;padding:0 22px 6px}
+.m-slide{flex:0 0 86%;border-radius:14px;overflow:hidden;background:#0d0d12}
+.m-slide img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}
+
+/* chips */
+.m-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.m-chip{font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;padding:9px 18px;border:1px solid rgba(255,255,255,.5);border-radius:30px;color:#fff;background:transparent}
+.m-chip.on{background:#fff;color:#0a1324;border-color:#fff}
+
+/* services */
+.m-serv{border-top:1px solid rgba(255,255,255,.16);padding:22px 0}
+.m-serv .no{font-family:'Tenor Sans',serif;font-size:15px;color:rgba(255,255,255,.5)}
+.m-serv h4{font-family:'Tenor Sans',serif;font-weight:400;font-size:23px;color:#fff;letter-spacing:-1px;margin:6px 0 10px}
+.m-serv p{font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;color:#c9ccd2;line-height:1.55}
+
+/* cta / quote / tags */
+.m-cta{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#000;font-family:'DM Sans',sans-serif;font-weight:600;font-size:17px;border-radius:30px;padding:15px 28px;margin-top:22px;text-decoration:none}
+.m-quote{font-family:'Tenor Sans',serif;font-size:21px;color:#fdfdfd;line-height:1.45;letter-spacing:-.5px;margin-top:22px}
+.m-author{font-family:'Tenor Sans',serif;font-size:18px;color:#fff;margin-top:20px}
+.m-role{font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(253,253,253,.5);margin-top:4px}
+.m-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.tag{display:inline-flex;align-items:center;padding:8px 15px;border:1px solid rgba(255,255,255,.2);border-radius:20px;font-family:'DM Sans',sans-serif;font-size:15px;color:#fff}
+
+/* marquee (static row) */
+.m-marquee{overflow:hidden;margin:26px -22px 0}
+.m-marquee .row{display:flex;gap:14px;padding-left:12px}
+.m-mcard{position:relative;width:120px;height:120px;border-radius:22px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:linear-gradient(150deg,rgba(255,255,255,.05),rgba(255,255,255,.012) 55%)}
+.m-mcard::after{content:"";position:absolute;left:50%;top:50%;width:92px;height:70px;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,255,255,.26),transparent 70%);filter:blur(10px)}
+.m-mcard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(135deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 27%,rgba(255,255,255,0) 73%,rgba(255,255,255,.4) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.m-mcard img{position:relative;z-index:1;max-width:80px;max-height:28px;object-fit:contain;opacity:.95}
+
+/* experience rows */
+.m-exp{margin-top:16px}
+.m-exp .r{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.14);font-family:'Inter',sans-serif;font-size:13.5px}
+.m-exp .r:first-child{border-top:1px solid rgba(255,255,255,.14)}
+.m-exp .r span:first-child{color:rgba(255,255,255,.85)}
+.m-exp .r span:last-child{color:rgba(255,255,255,.45);white-space:nowrap;text-align:right}
+
+/* offline grid */
+.m-offline{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.m-offline figure{margin:0}
+.m-offline img{width:100%;aspect-ratio:366/455;object-fit:cover;border-radius:12px;display:block}
+.m-offline figcaption{font-family:'Tenor Sans',serif;font-size:16px;color:#fff;margin-top:9px}
+
+/* contact form */
+.m-form{background:#fff;border-radius:18px;padding:24px 20px;margin-top:6px}
+.m-form h3{font-family:'DM Sans',sans-serif;font-weight:600;font-size:24px;color:#0a0a0a;letter-spacing:-1px;margin-bottom:18px}
+.m-form label{display:block;font-family:'DM Sans',sans-serif;font-size:13.5px;color:#0a0a0a;margin:13px 0 7px}
+.m-form input{width:100%;height:50px;background:#f5f5f5;border:none;border-radius:8px;padding:0 15px;font-family:'DM Sans',sans-serif;font-size:15px;color:#676161}
+.m-form button{width:100%;height:52px;background:#0a1324;color:#fff;border:none;border-radius:26px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:16px;margin-top:20px}
+.m-connect{margin-top:38px}
+.m-connect .big{font-family:'Tenor Sans',serif;font-size:34px;color:#fff;letter-spacing:-1.6px;line-height:1.05}
+.m-connect .info{font-family:'Tenor Sans',serif;font-size:21px;color:#fff;margin-top:20px;line-height:1.5}
+.m-connect .socials{display:flex;gap:22px;margin-top:22px}
+.m-connect .socials span{font-family:'Tenor Sans',serif;font-size:14px;color:#fff;border-top:1px solid rgba(255,255,255,.4);padding-top:8px}
+.m-foot{background:#fcfcfc;margin:48px -22px 0;padding:42px 22px 28px;text-align:left}
+.m-foot .brand{display:block;font-family:'Tenor Sans',serif;font-size:32px;color:#080d1d;letter-spacing:-1.6px;white-space:nowrap}
+.m-foot .brand small{font-size:15px;vertical-align:super}
+.m-foot .tagf{font-family:'Tenor Sans',serif;font-size:18px;color:#b8b8b8;margin-top:2px}
+.m-foot .links{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:26px}
+.m-foot .links span{font-family:'DM Sans',sans-serif;font-weight:500;font-size:14.5px;color:#080d1d}
+.m-copy{padding:20px 22px;text-align:center;font-family:'Tenor Sans',serif;font-size:12.5px;color:#adaeb0;background:#050507}
