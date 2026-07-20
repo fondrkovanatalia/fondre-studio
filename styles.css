@@ -72,9 +72,10 @@ img{display:block}
 .btn-white{transition:transform .25s ease, box-shadow .25s ease}
 .btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,255,255,.20)}
 
-/* DE/NL hero subheading is longer — shrink it so it clears the hero photo */
-html[data-lang="DE"] .hero-sub,
-html[data-lang="NL"] .hero-sub{font-size:74px !important;letter-spacing:-3px}
+/* DE/NL hero subheading is longer (kept at full 100px size, like the headline)
+   — move the hero photo down so the taller heading clears it */
+html[data-lang="DE"] .hero-photo,
+html[data-lang="NL"] .hero-photo{top:884px !important}
 
 /* contact pill that hugs the translated word (no fixed width) */
 .cta-pill{display:inline-flex;align-items:center;justify-content:center;padding:0 24px;background:#fff;
@@ -143,7 +144,7 @@ html[data-lang="NL"] .hero-sub{font-size:74px !important;letter-spacing:-3px}
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
   mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
 /* logos sit above the glow, normalized to the same optical height */
-.marquee-card img{position:relative;z-index:1;width:auto;height:auto;max-width:150px;max-height:47px;object-fit:contain;opacity:.95}
+.marquee-card img{position:relative;z-index:1;width:auto;height:42px;max-width:158px;object-fit:contain;object-position:center;opacity:.95}
 @keyframes marqueeMove{from{transform:translateX(0)}to{transform:translateX(calc(var(--shift,1320px) * -1))}}
 
 /* legal pages (Ochrana súkromia / Pravidlá používania) */
