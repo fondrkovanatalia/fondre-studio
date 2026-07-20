@@ -26,8 +26,7 @@
           <button role="option" data-lang="DE"><span>Deutsch</span><b>DE</b></button>
         </div>
       </div>
-      <a href="index.html#kontakt" class="abs btn-white nav-cta" style="left:1466px;top:45px;width:200px;height:45px;background:#fff;border-radius:30px;z-index:51"></a>
-      <a href="index.html#kontakt" class="abs dm nav-cta" style="left:1498px;top:54px;font-size:20px;font-weight:600;color:#000;letter-spacing:-1px;z-index:52;line-height:normal">Kontaktujte nás</a>
+      <a href="index.html#kontakt" class="abs dm nav-cta cta-pill" style="left:1466px;top:45px;height:45px;z-index:52">Kontaktujte nás</a>
   `;
   let topnav = document.getElementById('topnav');
   if (!topnav) { topnav = document.createElement('div'); topnav.id = 'topnav'; document.body.appendChild(topnav); }

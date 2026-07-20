@@ -71,6 +71,17 @@ img{display:block}
 /* ---- generic hover niceties ---- */
 .btn-white{transition:transform .25s ease, box-shadow .25s ease}
 .btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,255,255,.20)}
+
+/* DE/NL hero subheading is longer — shrink it so it clears the hero photo */
+html[data-lang="DE"] .hero-sub,
+html[data-lang="NL"] .hero-sub{font-size:74px !important;letter-spacing:-3px}
+
+/* contact pill that hugs the translated word (no fixed width) */
+.cta-pill{display:inline-flex;align-items:center;justify-content:center;padding:0 24px;background:#fff;
+  border-radius:30px;color:#000;font-family:'DM Sans',sans-serif;font-weight:600;font-size:20px;
+  letter-spacing:-1px;white-space:nowrap;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
+.cta-pill:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,255,255,.20)}
+.cta-pill-lg{padding:0 32px;font-size:22px;letter-spacing:-1.1px}
 .proj-media{overflow:hidden}
 .proj-media img{transition:transform .9s cubic-bezier(.22,1,.36,1)}
 .proj-card:hover .proj-media img{transform:scale(1.045)}
@@ -311,3 +322,4 @@ img{display:block}
 
   .m-block{margin-top:38px}
 }
+
