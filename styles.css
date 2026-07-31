@@ -374,3 +374,8 @@ body.pd-lock{overflow:hidden}
 .pd-list li strong{font-weight:600;color:#fff}
 .pd-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .pd-chip{font-family:'DM Sans',sans-serif;font-size:13px;letter-spacing:-0.2px;color:#dfe7ef;padding:7px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.03)}
+
+/* project modal triggers: arrow next to the name, pointer on name + image */
+.pimg[data-proj],.proj-card[data-proj],.carousel[data-proj],.m-proj[data-proj],.tenor[data-proj]{cursor:pointer}
+.pd-titlearrow{display:inline-block;margin-left:9px;font-size:.6em;color:#b3d6ed;transition:transform .2s ease}
+.pd-titlelink:hover .pd-titlearrow{transform:translateX(4px)}

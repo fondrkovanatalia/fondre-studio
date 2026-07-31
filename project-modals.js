@@ -364,47 +364,52 @@
     if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
   });
 
-  /* ---- inject the subtle button UNDER each project's name + description ---- */
-  function makeBtn(key, mobile) {
-    var btn = document.createElement(mobile ? 'span' : 'button');
-    btn.className = mobile ? 'pd-btn-m' : 'pd-btn';
-    if (mobile) { btn.setAttribute('role', 'button'); btn.setAttribute('tabindex', '0'); }
-    else btn.setAttribute('type', 'button');
-    btn.setAttribute('data-proj', key);
-    btn.innerHTML = 'Zobraziť detail ' + ARROW;
-    return btn;
+  /* ---- add a small arrow next to each project name; open modal on name/image click ---- */
+  var TRIGGERS = '.tenor[data-proj], .pimg[data-proj], .proj-card[data-proj], .carousel[data-proj], .m-proj[data-proj]';
+
+  function addArrow(el) {
+    if (el.querySelector('.pd-titlearrow')) return;
+    el.classList.add('pd-titlelink');
+    var a = document.createElement('span');
+    a.className = 'pd-titlearrow';
+    a.setAttribute('aria-hidden', 'true');
+    a.textContent = '→';
+    el.appendChild(a);
   }
-  function injectButtons() {
-    // desktop: element carrying data-pdbtn = the subtitle/label under which the button goes
-    document.querySelectorAll('[data-pdbtn]').forEach(function (el) {
-      var key = el.getAttribute('data-pdbtn');
-      if (!DATA[key] || el.getAttribute('data-pd')) return;
-      el.setAttribute('data-pd', '1');
-      el.appendChild(makeBtn(key, false));
+  function injectTriggers() {
+    // desktop project names (projekty .ptitle, home + Otters .tenor) -> arrow + focusable
+    document.querySelectorAll('.tenor[data-proj]').forEach(function (el) {
+      if (!DATA[el.getAttribute('data-proj')]) return;
+      addArrow(el);
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
     });
-    // mobile: append at the end of each card (below the name + description)
-    document.querySelectorAll('#mobile .m-proj[data-proj]').forEach(function (el) {
-      var key = el.getAttribute('data-proj');
-      if (!DATA[key] || el.getAttribute('data-pd')) return;
-      el.setAttribute('data-pd', '1');
-      el.appendChild(makeBtn(key, true));
+    // mobile: arrow next to the card title
+    document.querySelectorAll('#mobile .m-proj[data-proj] .ttl').forEach(function (el) {
+      var card = el.closest('.m-proj');
+      if (!card || !DATA[card.getAttribute('data-proj')]) return;
+      addArrow(el);
     });
   }
 
+  // click the name OR the image (card) -> open the modal
   document.addEventListener('click', function (e) {
-    var b = e.target.closest('.pd-btn, .pd-btn-m');
-    if (!b) return;
+    var t = e.target.closest(TRIGGERS);
+    if (!t) return;
+    var key = t.getAttribute('data-proj');
+    if (!DATA[key]) return;
     e.preventDefault();
-    e.stopPropagation();
-    openModal(b.getAttribute('data-proj'));
+    openModal(key);
   });
+  // keyboard: Enter / Space on a focused project name
   document.addEventListener('keydown', function (e) {
-    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('pd-btn-m')) {
-      e.preventDefault();
-      openModal(e.target.getAttribute('data-proj'));
-    }
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var t = e.target && e.target.closest ? e.target.closest('.tenor[data-proj]') : null;
+    if (!t || !DATA[t.getAttribute('data-proj')]) return;
+    e.preventDefault();
+    openModal(t.getAttribute('data-proj'));
   });
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectButtons);
-  else injectButtons();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectTriggers);
+  else injectTriggers();
 })();
