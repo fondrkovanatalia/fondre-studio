@@ -1,12 +1,10 @@
 /* =====================================================================
-   Project detail - subtle "Zobraziť detail" button (under each project's
-   name + description) + brand-styled bottom-sheet modal (case study).
-   Self-contained. Loaded on index.html (home) and projekty.html.
+   Project detail - a small arrow next to each project name; clicking the
+   name or the project image opens a brand-styled bottom-sheet modal
+   (case study). Self-contained. Loaded on index.html and projekty.html.
    ===================================================================== */
 (function () {
   'use strict';
-
-  var ARROW = '<span class="pd-ar">→</span>';
 
   var DATA = {
     woeva: {
