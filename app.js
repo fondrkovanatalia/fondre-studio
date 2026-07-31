@@ -1,4 +1,4 @@
-/* ================= Fondré Studio — runtime ================= */
+/* ================= Fondré Studio - runtime ================= */
 (function () {
   const stage = document.querySelector('.stage');
   const frame = document.getElementById('frame');
@@ -319,7 +319,7 @@
   }
 
   /* =================================================================
-     INTERACTIVE HERO PARTICLES — dots that fly around the cursor
+     INTERACTIVE HERO PARTICLES - dots that fly around the cursor
      ================================================================= */
   function initParticles(canvas, cw, ch) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);

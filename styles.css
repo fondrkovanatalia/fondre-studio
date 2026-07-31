@@ -1,4 +1,4 @@
-/* ============ Fondré Studio — pixel-perfect rebuild of Figma design ============ */
+/* ============ Fondré Studio - pixel-perfect rebuild of Figma design ============ */
 @import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Inter:wght@400;500&display=swap');
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -38,7 +38,7 @@ img{display:block}
 .hero-layer{z-index:2}
 
 /* ---- navbar ---- */
-/* 01 – Navbar (sticky, scaled to match the stage) */
+/* 01 - Navbar (sticky, scaled to match the stage) */
 #topnav{position:fixed;left:0;top:0;width:1754px;height:116px;transform-origin:top left;z-index:1000}
 .nav-bar{position:absolute;left:0;top:0;width:1754px;height:116px;z-index:1;
   background:rgba(7,12,28,0.20);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
@@ -73,7 +73,7 @@ img{display:block}
 .btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,255,255,.20)}
 
 /* DE/NL hero subheading is longer (kept at full 100px size, like the headline)
-   — move the hero photo down so the taller heading clears it */
+   - move the hero photo down so the taller heading clears it */
 html[data-lang="DE"] .hero-photo,
 html[data-lang="NL"] .hero-photo{top:884px !important}
 
@@ -163,7 +163,7 @@ html[data-lang="NL"] .hero-photo{top:884px !important}
 #contactfooter,#navbar{position:absolute;left:0;top:0;width:1754px}
 
 /* ============================================================
-   MOBILE VERSION (< 820px) — single-column responsive layout
+   MOBILE VERSION (< 820px) - single-column responsive layout
    ============================================================ */
 #mobile{display:none}
 #mnav,#mnav-overlay{display:none}
@@ -324,3 +324,45 @@ html[data-lang="NL"] .hero-photo{top:884px !important}
   .m-block{margin-top:38px}
 }
 
+
+/* ================= PROJECT DETAIL - subtle button + bottom-sheet modal ================= */
+/* small "Zobraziť detail" button on project cards (desktop scaled stage) */
+.pd-btn{position:absolute;right:18px;bottom:18px;z-index:6;display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Sans',sans-serif;font-weight:500;font-size:17px;letter-spacing:-0.4px;color:#fff;
+  padding:10px 18px;border-radius:30px;border:1px solid rgba(255,255,255,.24);
+  background:rgba(8,13,29,.5);backdrop-filter:blur(9px) saturate(120%);-webkit-backdrop-filter:blur(9px) saturate(120%);
+  cursor:pointer;transition:background .2s ease,border-color .2s ease}
+.pd-btn:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.5)}
+.pd-btn .pd-ar,.pd-btn-m .pd-ar{color:#b3d6ed;transition:transform .2s ease}
+.pd-btn:hover .pd-ar{transform:translateX(3px)}
+/* mobile button */
+.pd-btn-m{display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;letter-spacing:-0.2px;color:#eaf1f7;
+  padding:9px 16px;border-radius:30px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04);cursor:pointer}
+/* overlay + bottom sheet */
+.pd-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(3,6,14,.64);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  opacity:0;pointer-events:none;transition:opacity .35s ease}
+.pd-overlay.open{opacity:1;pointer-events:auto}
+.pd-sheet{position:relative;width:min(720px,100%);max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:46px 50px 54px;border-radius:28px 28px 0 0;border:1px solid rgba(255,255,255,.09);border-bottom:none;
+  background:radial-gradient(130% 420px at 50% -80px,rgba(51,92,168,.30),rgba(10,19,36,0) 68%),#0a1324;
+  box-shadow:0 -30px 90px rgba(0,0,0,.55);transform:translateY(102%);transition:transform .44s cubic-bezier(.22,1,.36,1)}
+.pd-overlay.open .pd-sheet{transform:translateY(0)}
+.pd-close{position:absolute;top:20px;right:22px;width:42px;height:42px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:#fff;font-size:22px;line-height:1;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease,border-color .2s ease}
+.pd-close:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4)}
+.pd-eyebrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:#b3d6ed}
+.pd-tag{font-size:11px;letter-spacing:1.5px;padding:3px 11px;border-radius:20px;border:1px solid rgba(179,214,237,.45);color:#b3d6ed}
+.pd-title{font-family:'Tenor Sans',serif;font-size:clamp(30px,4.6vw,44px);color:#fff;letter-spacing:-1.8px;line-height:1.05;margin:18px 0 4px}
+.pd-section{margin-top:26px}
+.pd-label{font-family:'DM Sans',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:9px}
+.pd-text{font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;line-height:1.66;color:rgba(253,253,253,.84);letter-spacing:-0.2px}
+body.pd-lock{overflow:hidden}
+@media (max-width:819px){
+  .pd-sheet{padding:34px 22px 40px;max-height:90vh}
+  .pd-title{letter-spacing:-1.2px}
+  .pd-close{top:16px;right:16px}
+}
