@@ -82,9 +82,9 @@
     pdBody.innerHTML =
       '<div class="pd-eyebrow">' + esc(d.cat) + tag + '</div>' +
       '<h2 class="pd-title" id="pd-title">' + esc(d.title) + '</h2>' +
-      '<div class="pd-section"><div class="pd-label">O projekte</div><p class="pd-text">' + esc(d.about) + '</p></div>' +
-      '<div class="pd-section"><div class="pd-label">Aký problém riešil</div><p class="pd-text">' + esc(d.problem) + '</p></div>' +
-      '<div class="pd-section"><div class="pd-label">Prečo toto riešenie</div><p class="pd-text">' + esc(d.why) + '</p></div>';
+      '<div class="pd-section"><div class="pd-label">Kontext</div><p class="pd-text">' + esc(d.about) + '</p></div>' +
+      '<div class="pd-section"><div class="pd-label">Výzva</div><p class="pd-text">' + esc(d.problem) + '</p></div>' +
+      '<div class="pd-section"><div class="pd-label">Prístup</div><p class="pd-text">' + esc(d.why) + '</p></div>';
     overlay.classList.add('open');
     document.body.classList.add('pd-lock');
     sheet.scrollTop = 0;
