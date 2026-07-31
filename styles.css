@@ -126,7 +126,7 @@ html[data-lang="NL"] .hero-photo{top:884px !important}
 /* ================= MARQUEE ================= */
 .marquee{position:absolute;overflow:hidden;display:flex;align-items:center}
 /* one group = 5 cards*226 + 5 gaps*38 = 1320px -> seamless loop */
-.marquee .row{display:flex;gap:38px;width:max-content;align-items:center;height:226px;padding-left:30px;--shift:1320px;animation:marqueeMove 26s linear infinite}
+.marquee .row{display:flex;gap:38px;width:max-content;align-items:center;height:226px;padding-left:30px;--shift:1320px;animation:marqueeMove 26s linear infinite;will-change:transform;backface-visibility:hidden}
 .marquee:hover .row{animation-play-state:paused}
 /* glassmorphism card: soft white glow behind frosted glass, edge highlight on TL+BR corners */
 .marquee-card{position:relative;width:226px;height:226px;border-radius:34px;flex:0 0 auto;
@@ -144,7 +144,7 @@ html[data-lang="NL"] .hero-photo{top:884px !important}
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
   mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
 /* logos sit above the glow, normalized to the same optical height */
-.marquee-card img{position:relative;z-index:1;width:auto;height:42px;max-width:158px;object-fit:contain;object-position:center;opacity:.95}
+.marquee-card img{position:relative;z-index:1;width:auto;height:42px;max-width:158px;object-fit:contain;object-position:center;opacity:.95;transform:translateZ(0);backface-visibility:hidden;image-rendering:auto}
 @keyframes marqueeMove{from{transform:translateX(0)}to{transform:translateX(calc(var(--shift,1320px) * -1))}}
 
 /* legal pages (Ochrana súkromia / Pravidlá používania) */
@@ -269,7 +269,7 @@ html[data-lang="NL"] .hero-photo{top:884px !important}
   /* marquee (mobile) */
   .m-marquee{overflow:hidden;margin:26px -22px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
   /* one group = 5 cards*132 + 5 gaps*16 = 740px -> seamless loop */
-  .m-marquee .row{display:flex;gap:16px;width:max-content;align-items:center;--shift:740px;animation:marqueeMove 22s linear infinite}
+  .m-marquee .row{display:flex;gap:16px;width:max-content;align-items:center;--shift:740px;animation:marqueeMove 22s linear infinite;will-change:transform;backface-visibility:hidden}
   .m-mcard{position:relative;width:132px;height:132px;border-radius:22px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;overflow:hidden;
     background:linear-gradient(150deg,rgba(255,255,255,.05),rgba(255,255,255,.012) 55%);backdrop-filter:blur(8px) saturate(125%);-webkit-backdrop-filter:blur(8px) saturate(125%)}
   .m-mcard::after{content:"";position:absolute;left:50%;top:50%;width:100px;height:78px;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;z-index:0;
@@ -278,7 +278,7 @@ html[data-lang="NL"] .hero-photo{top:884px !important}
     background:linear-gradient(135deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 27%,rgba(255,255,255,0) 73%,rgba(255,255,255,.4) 100%);
     -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
     mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
-  .m-mcard img{position:relative;z-index:1;width:auto;height:auto;max-width:88px;max-height:30px;object-fit:contain;opacity:.95}
+  .m-mcard img{position:relative;z-index:1;width:auto;height:auto;max-width:88px;max-height:30px;object-fit:contain;opacity:.95;transform:translateZ(0);backface-visibility:hidden}
 
   /* contact form (mobile) */
   .m-form{background:#fff;border-radius:18px;padding:26px 22px;margin-top:91px}

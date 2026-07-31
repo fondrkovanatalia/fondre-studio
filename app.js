@@ -112,8 +112,8 @@
       </div>
       <div class="m-connect">
         <div class="big">Spojme sa<br>k vášmu <span class="m-grad">projektu</span></div>
-        <div class="info">+421911657234<br>natalie@fondrestudio.com</div>
-        <div class="socials"><a href="https://linkedin.com" target="_blank">Linked In</a><a href="https://x.com" target="_blank">X.com</a><a href="https://behance.net" target="_blank">Behancé</a></div>
+        <div class="info">+421911657234<br>fondrkova.natalia@gmail.com</div>
+        <div class="socials"><a href="https://www.linkedin.com/in/nat%C3%A1lia-fondrkov%C3%A1-7195a8167/" target="_blank" rel="noopener">Linked In</a><a href="https://www.instagram.com/fondu_la/" target="_blank" rel="noopener">Instagram</a></div>
       </div>
       <div class="m-foot">
         <div class="brand">Fondré Studio<small>©</small></div>
@@ -152,11 +152,10 @@
 
       <!-- contact info -->
       <div class="abs tenor" style="left:910px;top:28px;width:610px;font-size:68px;color:#fff;letter-spacing:-2.25px;line-height:normal">Spojme sa<br>k vášmu <span class="iserif">projektu</span></div>
-      <div class="abs tenor" style="left:941px;top:257px;width:410px;font-size:34px;color:#fff;letter-spacing:-1.7px;line-height:1.35">+421911657234<br>natalie@fondrestudio.com</div>
+      <div class="abs tenor" style="left:941px;top:257px;width:410px;font-size:34px;color:#fff;letter-spacing:-1.7px;line-height:1.35">+421911657234<br>fondrkova.natalia@gmail.com</div>
 
-      ${socialLink('Linked In',910,'https://linkedin.com')}
-      ${socialLink('X.com',1121,'https://x.com')}
-      ${socialLink('Behancé',1339,'https://behance.net')}
+      ${socialLink('Linked In',910,'https://www.linkedin.com/in/nat%C3%A1lia-fondrkov%C3%A1-7195a8167/')}
+      ${socialLink('Instagram',1121,'https://www.instagram.com/fondu_la/')}
 
       <!-- light footer band -->
       <div class="abs" style="left:0;top:845px;width:1754px;height:505px;background:#fcfcfc"></div>

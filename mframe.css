@@ -105,7 +105,7 @@ body{background:#111;display:flex;justify-content:center}
 .m-connect .big{font-family:'Tenor Sans',serif;font-size:34px;color:#fff;letter-spacing:-1.6px;line-height:1.05}
 .m-connect .info{font-family:'Tenor Sans',serif;font-size:21px;color:#fff;margin-top:20px;line-height:1.5}
 .m-connect .socials{display:flex;gap:22px;margin-top:22px}
-.m-connect .socials span{font-family:'Tenor Sans',serif;font-size:14px;color:#fff;border-top:1px solid rgba(255,255,255,.4);padding-top:8px}
+.m-connect .socials span,.m-connect .socials a{font-family:'Tenor Sans',serif;font-size:14px;color:#fff;border-top:1px solid rgba(255,255,255,.4);padding-top:8px;text-decoration:none}
 .m-foot{background:#fcfcfc;margin:48px -22px 0;padding:42px 22px 28px;text-align:left}
 .m-foot .brand{display:block;font-family:'Tenor Sans',serif;font-size:32px;color:#080d1d;letter-spacing:-1.6px;white-space:nowrap}
 .m-foot .brand small{font-size:15px;vertical-align:super}
