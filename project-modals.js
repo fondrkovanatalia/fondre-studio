@@ -318,7 +318,7 @@
   function renderBlock(b) {
     if (b[0] === 'p') return '<p class="pd-text">' + fmt(b[1]) + '</p>';
     if (b[0] === 'ul') return '<ul class="pd-list">' + b[1].map(function (i) { return '<li>' + fmt(i) + '</li>'; }).join('') + '</ul>';
-    if (b[0] === 'tags') return '<div class="pd-tags">' + b[1].map(function (t) { return '<span class="pd-chip">' + esc(t) + '</span>'; }).join('') + '</div>';
+    if (b[0] === 'tags') return '<div class="pd-tags">' + b[1].map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div>';
     return '';
   }
 
