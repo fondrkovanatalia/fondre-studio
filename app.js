@@ -187,10 +187,10 @@
 
   /* ---------- contact form: validation + states ---------- */
   const MSGS = {
-    SK: { fix: 'Skontrolujte, prosím, zvýraznené polia.', ok: 'Ďakujeme! Ozveme sa vám čo najskôr.', sending: 'Odosielam…' },
-    EN: { fix: 'Please check the highlighted fields.', ok: "Thank you! We'll get back to you soon.", sending: 'Sending…' },
-    DE: { fix: 'Bitte überprüfen Sie die markierten Felder.', ok: 'Danke! Wir melden uns bald bei Ihnen.', sending: 'Senden…' },
-    NL: { fix: 'Controleer de gemarkeerde velden.', ok: 'Bedankt! We nemen snel contact op.', sending: 'Versturen…' }
+    SK: { fix: 'Skontrolujte, prosím, zvýraznené polia.', ok: 'Ďakujeme! Ozveme sa vám čo najskôr.', sending: 'Odosielam…', err: 'Správu sa nepodarilo odoslať. Skúste to znova alebo napíšte na fondrkova.natalia@gmail.com.' },
+    EN: { fix: 'Please check the highlighted fields.', ok: "Thank you! We'll get back to you soon.", sending: 'Sending…', err: "Couldn't send your message. Please try again or email fondrkova.natalia@gmail.com." },
+    DE: { fix: 'Bitte überprüfen Sie die markierten Felder.', ok: 'Danke! Wir melden uns bald bei Ihnen.', sending: 'Senden…', err: 'Nachricht konnte nicht gesendet werden. Bitte erneut versuchen oder an fondrkova.natalia@gmail.com schreiben.' },
+    NL: { fix: 'Controleer de gemarkeerde velden.', ok: 'Bedankt! We nemen snel contact op.', sending: 'Versturen…', err: 'Bericht kon niet worden verzonden. Probeer opnieuw of mail naar fondrkova.natalia@gmail.com.' }
   };
   function msg(k) { const l = document.documentElement.getAttribute('data-lang') || 'SK'; return (MSGS[l] || MSGS.SK)[k]; }
   function emailValid(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); }
@@ -219,16 +219,38 @@
       firstErr.focus();
       return;
     }
-    // success
+    // passed validation -> send to Formspree
+    var origLabel = b.textContent;
     b.disabled = true;
     b.textContent = msg('sending');
     if (status) { status.textContent = ''; }
-    setTimeout(function () {
+    var payload = {};
+    fields.forEach(function (f) { payload[f.getAttribute('data-field')] = (f.value || '').trim(); });
+    fetch('https://formspree.io/f/xpqvejpe', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: payload.name || '',
+        email: payload.email || '',
+        message: payload.msg || '',
+        _subject: 'Nová správa z fondrestudio.com'
+      })
+    }).then(function (res) {
+      if (res.ok) {
+        fields.forEach(function (f) { f.value = ''; f.classList.remove('field-err'); });
+        if (status) { status.textContent = msg('ok'); status.classList.add('ok'); }
+      } else {
+        return res.json().then(function (d) {
+          var m = (d && d.errors && d.errors.length) ? d.errors.map(function (x) { return x.message; }).join(', ') : msg('err');
+          if (status) { status.textContent = m; status.classList.add('err'); }
+        });
+      }
+    }).catch(function () {
+      if (status) { status.textContent = msg('err'); status.classList.add('err'); }
+    }).then(function () {
       b.disabled = false;
-      b.textContent = 'Odoslať';
-      fields.forEach(function (f) { f.value = ''; f.classList.remove('field-err'); });
-      if (status) { status.textContent = msg('ok'); status.classList.add('ok'); }
-    }, 900);
+      b.textContent = origLabel;
+    });
   });
   // clear a field's error state as the user types
   document.addEventListener('input', function (e) {
