@@ -113,3 +113,6 @@ body{background:#111;display:flex;justify-content:center}
 .m-foot .links{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:26px}
 .m-foot .links span{font-family:'DM Sans',sans-serif;font-weight:500;font-size:14.5px;color:#080d1d}
 .m-copy{padding:20px 22px;text-align:center;font-family:'Tenor Sans',serif;font-size:12.5px;color:#adaeb0;background:#050507}
+
+/* dark brand logos rendered white on the dark glass cards */
+.m-mcard img.sportqo,.m-mcard img.drixton{filter:brightness(0) invert(1)}

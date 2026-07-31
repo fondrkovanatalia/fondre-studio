@@ -373,3 +373,6 @@ body.pd-lock{overflow:hidden}
 .pd-sheet::-webkit-scrollbar-track{background:transparent;margin:26px 0}
 .pd-sheet::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:10px;border:3px solid transparent;background-clip:content-box}
 .pd-sheet::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.30);background-clip:content-box}
+
+/* dark brand logos (Sportqo, Drixton) rendered white on the dark glass marquee cards */
+.marquee-card img.sportqo,.marquee-card img.drixton,.m-mcard img.sportqo,.m-mcard img.drixton{filter:brightness(0) invert(1)}
