@@ -14,48 +14,48 @@
       cat: 'Produktový dizajn · UX/UI · Dizajnový systém',
       concept: false,
       about: 'Woeva je mobilná aplikácia pre objavovanie mestského a nočného života - kluby, komunity, kamošov a miesta, ktoré robia tvoje mesto výnimočným. V reálnom čase ukazuje, čo sa práve deje okolo teba, a cez Woeva Picks odporúča aktivity na mieru tvojim záujmom a polohe.',
-      problem: 'Najlepšie eventy a komunity často ostávajú skryté v stories, chatoch a súkromných skupinách - ľudia ich zmeškajú, aj keď sa dejú hneď za rohom. Chýbalo jedno miesto, kde mesto naozaj žije a kde jednoducho nájdeš, kam ísť dnes večer.',
-      why: 'Produkt som postavila okolo objavovania v reálnom čase a lokálnosti, nie okolo statického zoznamu eventov. Preto Woeva Picks personalizuje aktivity podľa záujmov a spúšťame ju mesto po meste - Bratislava a Praha dnes, Viedeň a Londýn zajtra - aby si každé mesto udržalo vlastnú atmosféru a správnu komunitu ľudí, ktorí to žijú.'
+      problem: 'Objavovanie diania v meste bolo roztrieštené - informácie žili v stories, chatoch a uzavretých skupinách, bez jedného miesta v reálnom čase. Cieľom bolo znížiť námahu pri hľadaní "čo robiť teraz" a premeniť pasívne scrollovanie na rozhodnutie ísť von, s dôrazom na lokálnosť a aktuálnosť.',
+      why: 'Informačnú architektúru som postavila okolo objavovania v reálnom čase a lokálnosti, nie okolo statického katalógu eventov. Personalizáciu (Woeva Picks) som priorizovala už v onboardingu, aby sa obsah filtroval podľa záujmov a polohy a klesala rozhodovacia záťaž. Rollout mesto po meste bol zámerné produktové rozhodnutie - udržať hustotu obsahu a relevantnú komunitu namiesto prázdneho globálneho feedu.'
     },
     pulsesound: {
       title: 'PulseSound',
       cat: 'Webový dizajn · Branding · Audio platforma',
       concept: true,
       about: 'PulseSound je koncepčný návrh značky a webu pre audio platformu - domov pre podcasterov, hudobníkov a nezávislých zvukových tvorcov, kde publikujú, streamujú a budujú komunitu okolo svojho zvuku.',
-      problem: 'Audio tvorcovia sú roztrúsení naprieč platformami, ktoré ich obsah menia na neosobný feed bez charakteru. Chýbal im priestor, kde je zvuk hrdinom a značka pôsobí prémiovo, nie genericky.',
-      why: 'Zvolila som tmavý, sústredený vizuálny jazyk s dôrazom na waveform a pohyb, aby dizajn odrážal samotný zvuk. Branding som postavila na jednoduchom, rozpoznateľnom systéme, ktorý funguje konzistentne od loga cez web až po prehrávač.'
+      problem: 'Zvukoví tvorcovia sa strácali v generických feedoch, ktoré nerozlišujú medzi hudbou, podcastom a live streamom a nedávajú značke priestor. Zadaním bolo navrhnúť platformu, kde je zvuk primárnym objektom rozhrania a kde má tvorca vlastnú, rozpoznateľnú identitu - nie profil v uniformnej šablóne.',
+      why: 'Rozhranie som postavila okolo prehrávača ako perzistentného prvku a waveformu ako hlavnej vizuálnej metafory, aby bolo ovládanie zvuku dostupné odkiaľkoľvek v produkte. Zvolila som tmavú tému a redukovanú farebnosť, aby pozornosť niesol samotný obsah - obaly a vizualizácie. Branding som navrhla ako škálovateľný systém tokenov a komponentov, ktorý drží konzistenciu od loga cez web po in-app prehrávač.'
     },
     f1: {
       title: 'F1 Gamification panel',
       cat: 'Gamifikačný panel · Dizajnový systém · UX',
       concept: true,
       about: 'Koncept gamifikačného panelu pre fanúšikov Formuly 1 - interaktívny dashboard, ktorý mení sledovanie pretekov na zážitok cez predpovede, výzvy, rebríčky a odmeny naprieč celou sezónou.',
-      problem: 'Bežní fanúšikovia sledujú preteky pasívne a ich zapojenie medzi jednotlivými Grand Prix rýchlo opadá. Chýbala vrstva, ktorá udrží angažovanosť aj mimo pretekového víkendu.',
-      why: 'Postavila som to na jasnom dizajnovom systéme - modulárne komponenty ako karty výziev, progres či rebríčky, ktoré sa dajú skladať a rozširovať. Zvolila som prehľadnú hierarchiu a okamžitú spätnú väzbu, aby bol panel čitateľný počas živého preteku a zároveň motivoval vracať sa.'
+      problem: 'Zapojenie fanúšikov medzi jednotlivými Grand Prix prudko klesalo - sledovanie bolo pasívne a chýbala priebežná motivácia vracať sa. Zadaním bolo navrhnúť vrstvu angažovanosti, ktorá funguje počas živého preteku aj mimo neho, no nezahltí samotný zážitok zo sledovania.',
+      why: 'Navrhla som modulárny dizajnový systém - karty výziev, progres, rebríčky a odmeny ako samostatné komponenty, ktoré sa dajú skladať podľa fázy sezóny. Prioritou bola čitateľná hierarchia a okamžitá spätná väzba, aby bol panel použiteľný aj počas rýchleho diania na trati. Gamifikačné slučky (predpoveď, výsledok, odmena) som ladila tak, aby motivovali návraty a nepôsobili manipulatívne.'
     },
     herbert: {
       title: 'Herbert',
       cat: 'Produktový dizajn · Vizuálna identita · Web',
       concept: true,
       about: 'Herbert je koncepčný návrh značky, produktu a webu pre modernú remeselnú značku - od vizuálnej identity až po e-shop, ktorý predáva rovnako príbehom ako aj funkciou.',
-      problem: 'Malé remeselné značky často na webe pôsobia amatérsky a ich e-shop nevzbudzuje dôveru potrebnú na nákup. Chýbala identita, ktorá spojí charakter značky s hladkým nákupným zážitkom.',
-      why: 'Zvolila som čistú, teplú identitu a produktovo orientovaný web, kde je každý detail - typografia, fotografia aj mikrokopírovanie - podriadený dôvere a konverzii. Dizajnový systém som navrhla tak, aby značka vedela pridávať produkty bez straty konzistentnosti.'
+      problem: 'Malé remeselné značky často strácajú dôveru práve v momente nákupu - vizuál nesedí s kvalitou produktu a e-shop pridáva trenie v kritických krokoch. Zadaním bolo spojiť charakter značky s plynulým nákupným tokom, ktorý znižuje pochybnosti a vedie k dokončeniu objednávky.',
+      why: 'Identitu som postavila na teplom, čistom vizuálnom jazyku a e-shop navrhla okolo produktu - s dôrazom na hierarchiu informácií, kvalitnú fotografiu a mikrokopírovanie, ktoré rieši námietky priamo v mieste rozhodovania. Nákupný tok od produktu po checkout som skrátila na minimum krokov a celé to zastrešila dizajnovým systémom, aby značka vedela rásť a pridávať produkty bez straty konzistencie.'
     },
     playstation: {
       title: 'PlayStation',
       cat: 'Produktový dizajn · UX/UI',
       concept: true,
       about: 'Koncepčný redizajn časti PlayStation zážitku so zameraním na objavovanie a výber hier - rýchlejšia navigácia, osobnejšie odporúčania a rozhranie, ktoré necháva vyniknúť samotné hry.',
-      problem: 'Herné obchody zahlcujú hráčov množstvom titulov a promo obsahu, takže nájsť tú správnu hru býva zdĺhavé. Chýbal prehľadnejší a osobnejší tok objavovania.',
-      why: 'Postavila som to na jasnej vizuálnej hierarchii a personalizovaných odporúčaniach, ktoré rešpektujú prémiový, herný charakter značky. Zvolila som tmavé, filmové prostredie s dôrazom na artworky hier - aby obsah dýchal a rozhodovanie bolo rýchle.'
+      problem: 'Objavovanie hier trpelo preťažením - priveľa titulov a promo obsahu naraz, slabá personalizácia a zdĺhavá cesta od záujmu k výberu. Zadaním bolo skrátiť cestu k "tej správnej hre" a znížiť kognitívnu záťaž pri prehliadaní, bez straty prémiového, herného charakteru značky.',
+      why: 'Prepracovala som informačnú architektúru a hierarchiu tak, aby personalizované odporúčania a kľúčové akcie dostali prioritu a redukoval sa vizuálny šum. Zvolila som tmavé, filmové prostredie, kde artworky hier nesú pozornosť a rozhranie ustupuje obsahu. Rozhodnutia som opierala o rýchlosť výberu a konzistentné vzory naprieč celým tokom - od objavenia po kúpu.'
     },
     otters: {
       title: 'Otters tech conference ‘25',
       cat: 'Event branding · Web · Vizuálna identita',
       concept: true,
       about: 'Otters je koncept vizuálnej identity a webu pre technologickú konferenciu - od loga a dizajnového systému cez landing page až po materiály pre návštevníkov a rečníkov.',
-      problem: 'Technologické podujatia často pôsobia buď príliš korporátne, alebo chaoticky, a ich web nedokáže predať atmosféru ani jasne odkomunikovať program. Chýbala identita, ktorá je zároveň dôveryhodná aj živá.',
-      why: 'Zvolila som odvážny, energický vizuálny systém s výraznou farebnou akcentáciou a pohybom, ktorý odlišuje Otters od zvyčajných tech eventov. Web som navrhla okolo prehľadného programu a silného CTA na registráciu - aby identita zaujala a zároveň fungovala funkčne.'
+      problem: 'Technologické podujatia pôsobia buď príliš korporátne, alebo neprehľadne, a ich web nezvládne naraz predať atmosféru aj jasne odkomunikovať program a registráciu. Zadaním bolo vytvoriť identitu a web, ktoré sú dôveryhodné aj živé a zároveň funkčne vedú návštevníka k registrácii.',
+      why: 'Navrhla som odvážny, energický vizuálny systém s výraznou akcentáciou a pohybom, ktorý odlišuje Otters od typických tech eventov, no drží sa jasných pravidiel systému. Web som postavila okolo prehľadného programu a opakovanej výzvy na registráciu, s dôrazom na hierarchiu a rýchlu orientáciu. Identitu som navrhla ako konzistentný systém použiteľný od webu cez event materiály po sociálne siete.'
     }
   };
 
