@@ -360,9 +360,16 @@ body.pd-lock{overflow:hidden}
 .pd-list li{position:relative;padding-left:20px;font-family:'DM Sans',sans-serif;font-weight:300;font-size:16.5px;line-height:1.55;color:rgba(253,253,253,.84);letter-spacing:-0.2px}
 .pd-list li::before{content:"";position:absolute;left:2px;top:10px;width:5px;height:5px;border-radius:50%;background:#b3d6ed}
 .pd-list li strong{font-weight:600;color:#fff}
-.pd-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.pd-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
 
 /* project modal triggers: arrow next to the name, pointer on name + image */
 .pimg[data-proj],.proj-card[data-proj],.carousel[data-proj],.m-proj[data-proj],.tenor[data-proj]{cursor:pointer}
 .pd-titlearrow{display:inline-block;margin-left:9px;font-size:.6em;color:#b3d6ed;transition:transform .2s ease}
 .pd-titlelink:hover .pd-titlearrow{transform:translateX(4px)}
+
+/* modal scrollbar: thin + inset from the rounded corners so it never pokes out of the sheet */
+.pd-sheet{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.22) transparent}
+.pd-sheet::-webkit-scrollbar{width:10px}
+.pd-sheet::-webkit-scrollbar-track{background:transparent;margin:26px 0}
+.pd-sheet::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:10px;border:3px solid transparent;background-clip:content-box}
+.pd-sheet::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.30);background-clip:content-box}
