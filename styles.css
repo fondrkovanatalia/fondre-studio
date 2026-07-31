@@ -343,8 +343,7 @@ html[data-lang="NL"] .hero-photo{top:884px !important}
 .pd-close:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4)}
 .pd-eyebrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
   font-family:'DM Sans',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:#b3d6ed}
-.pd-tag{font-size:11px;letter-spacing:1.5px;padding:3px 11px;border-radius:20px;border:1px solid rgba(179,214,237,.45);color:#b3d6ed}
-.pd-title{font-family:'Tenor Sans',serif;font-size:clamp(30px,4.6vw,44px);color:#fff;letter-spacing:-1.8px;line-height:1.05;margin:18px 0 4px}
+.pd-title{font-family:'Tenor Sans',serif;font-weight:400;font-size:clamp(30px,4.6vw,44px);color:#fff;letter-spacing:-1.8px;line-height:1.05;margin:18px 0 4px}
 .pd-section{margin-top:26px}
 .pd-label{font-family:'DM Sans',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:9px}
 .pd-text{font-family:'DM Sans',sans-serif;font-weight:300;font-size:17px;line-height:1.66;color:rgba(253,253,253,.84);letter-spacing:-0.2px}

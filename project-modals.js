@@ -337,9 +337,8 @@
   function openModal(key) {
     var d = DATA[key];
     if (!d) return;
-    var tag = d.concept ? '<span class="pd-tag">Koncept</span>' : '';
     var html =
-      '<div class="pd-eyebrow">' + esc(d.cat) + tag + '</div>' +
+      '<div class="pd-eyebrow">' + esc(d.cat) + '</div>' +
       '<h2 class="pd-title" id="pd-title">' + esc(d.title) + '</h2>';
     d.sections.forEach(function (s) {
       html += '<div class="pd-section"><div class="pd-label">' + esc(s.label) + '</div>' +
