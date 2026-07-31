@@ -1,7 +1,7 @@
 /* =====================================================================
-   Project detail - subtle "Zobraziť detail" button + bottom-sheet modal.
+   Project detail - subtle "Zobraziť detail" button (under each project's
+   name + description) + brand-styled bottom-sheet modal (case study).
    Self-contained. Loaded on index.html (home) and projekty.html.
-   Matches the site brand (navy, Tenor Sans / DM Sans, light-blue accent).
    ===================================================================== */
 (function () {
   'use strict';
@@ -13,54 +13,315 @@
       title: 'Woeva',
       cat: 'Produktový dizajn · UX/UI · Dizajnový systém',
       concept: false,
-      about: 'Woeva je mobilná aplikácia pre objavovanie mestského a nočného života - kluby, komunity, kamošov a miesta, ktoré robia tvoje mesto výnimočným. V reálnom čase ukazuje, čo sa práve deje okolo teba, a cez Woeva Picks odporúča aktivity na mieru tvojim záujmom a polohe.',
-      problem: 'Objavovanie diania v meste bolo roztrieštené - informácie žili v stories, chatoch a uzavretých skupinách, bez jedného miesta v reálnom čase. Cieľom bolo znížiť námahu pri hľadaní "čo robiť teraz" a premeniť pasívne scrollovanie na rozhodnutie ísť von, s dôrazom na lokálnosť a aktuálnosť.',
-      why: 'Informačnú architektúru som postavila okolo objavovania v reálnom čase a lokálnosti, nie okolo statického katalógu eventov. Personalizáciu (Woeva Picks) som priorizovala už v onboardingu, aby sa obsah filtroval podľa záujmov a polohy a klesala rozhodovacia záťaž. Rollout mesto po meste bol zámerné produktové rozhodnutie - udržať hustotu obsahu a relevantnú komunitu namiesto prázdneho globálneho feedu.'
+      sections: [
+        { label: 'Kontext', blocks: [
+          ['p', 'Woeva je mobilná aplikácia na objavovanie mestského života v reálnom čase. Pomáha používateľom nájsť aktuálne podujatia, podniky, komunity a zaujímavé miesta vo svojom okolí prostredníctvom personalizovaných odporúčaní založených na ich polohe a záujmoch.']
+        ]},
+        { label: 'Zadanie', blocks: [
+          ['p', 'Objavovanie diania v meste bolo roztrieštené medzi sociálne siete, chatovacie aplikácie a uzavreté komunity. Používatelia museli sledovať množstvo rôznych zdrojov, aby zistili, čo sa práve deje a kam sa oplatí ísť.'],
+          ['p', 'Cieľom projektu bolo:'],
+          ['ul', [
+            'zjednodušiť objavovanie aktuálneho diania v okolí,',
+            'skrátiť čas potrebný na rozhodovanie,',
+            'premeniť pasívne prehliadanie obsahu na reálne zážitky,',
+            'vytvoriť jedno centrálne miesto pre lokálne komunity a mestský život.'
+          ]]
+        ]},
+        { label: 'Rozsah práce', blocks: [
+          ['p', 'Projekt zahŕňal kompletný návrh používateľského zážitku a používateľského rozhrania mobilnej aplikácie - od prvotného konceptu až po finálny dizajn pripravený na implementáciu.'],
+          ['p', 'Počas projektu som navrhla:'],
+          ['ul', [
+            'informačnú architektúru aplikácie,',
+            'používateľské scenáre (User Flows),',
+            'wireframy,',
+            'onboarding používateľa,',
+            'personalizačný systém **Woeva Picks**,',
+            'dizajn systém a UI komponenty,',
+            'high-fidelity obrazovky,',
+            'interaktívne prototypy,',
+            'dizajn pre vývoj a implementáciu.'
+          ]]
+        ]},
+        { label: 'Dizajnový prístup', blocks: [
+          ['p', 'Pri návrhu som sa nesústredila na tradičný katalóg podujatí, ale na objavovanie diania v reálnom čase. Celá informačná architektúra bola navrhnutá tak, aby používateľ čo najrýchlejšie našiel relevantné aktivity vo svojom okolí bez zdĺhavého vyhľadávania.'],
+          ['p', 'Kľúčové produktové rozhodnutia:'],
+          ['ul', [
+            '**Objavovanie v reálnom čase** - prioritou bolo zobrazovať obsah, ktorý je aktuálny práve v danom momente.',
+            '**Personalizácia od prvého spustenia** - onboarding zbiera informácie o záujmoch a lokalite používateľa, aby bol obsah relevantný už od prvého otvorenia aplikácie.',
+            '**Zníženie rozhodovacej záťaže** - namiesto nekonečného feedu aplikácia ponúka personalizované odporúčania prostredníctvom funkcie **Woeva Picks**.',
+            '**Lokalita ako základ navigácie** - obsah sa prispôsobuje aktuálnej polohe používateľa a jeho bezprostrednému okoliu.',
+            '**Postupný rollout po mestách** - aplikácia bola navrhnutá tak, aby sa v každom meste najskôr vybudovala aktívna komunita a dostatočné množstvo relevantného obsahu pred ďalšou expanziou.'
+          ]]
+        ]},
+        { label: 'Kľúčové oblasti', blocks: [
+          ['tags', ['UX stratégia','Informačná architektúra','User Flows','Wireframing','Prototypovanie','UI Design','Design System','Onboarding','Personalizácia používateľského zážitku','Mobile-first dizajn','Handoff pre vývoj']]
+        ]}
+      ]
     },
-    pulsesound: {
-      title: 'PulseSound',
-      cat: 'Webový dizajn · Branding · Audio platforma',
-      concept: true,
-      about: 'PulseSound je koncepčný návrh značky a webu pre audio platformu - domov pre podcasterov, hudobníkov a nezávislých zvukových tvorcov, kde publikujú, streamujú a budujú komunitu okolo svojho zvuku.',
-      problem: 'Zvukoví tvorcovia sa strácali v generických feedoch, ktoré nerozlišujú medzi hudbou, podcastom a live streamom a nedávajú značke priestor. Zadaním bolo navrhnúť platformu, kde je zvuk primárnym objektom rozhrania a kde má tvorca vlastnú, rozpoznateľnú identitu - nie profil v uniformnej šablóne.',
-      why: 'Rozhranie som postavila okolo prehrávača ako perzistentného prvku a waveformu ako hlavnej vizuálnej metafory, aby bolo ovládanie zvuku dostupné odkiaľkoľvek v produkte. Zvolila som tmavú tému a redukovanú farebnosť, aby pozornosť niesol samotný obsah - obaly a vizualizácie. Branding som navrhla ako škálovateľný systém tokenov a komponentov, ktorý drží konzistenciu od loga cez web po in-app prehrávač.'
-    },
+
     f1: {
       title: 'F1 Gamification panel',
       cat: 'Gamifikačný panel · Dizajnový systém · UX',
       concept: true,
-      about: 'Koncept gamifikačného panelu pre fanúšikov Formuly 1 - interaktívny dashboard, ktorý mení sledovanie pretekov na zážitok cez predpovede, výzvy, rebríčky a odmeny naprieč celou sezónou.',
-      problem: 'Zapojenie fanúšikov medzi jednotlivými Grand Prix prudko klesalo - sledovanie bolo pasívne a chýbala priebežná motivácia vracať sa. Zadaním bolo navrhnúť vrstvu angažovanosti, ktorá funguje počas živého preteku aj mimo neho, no nezahltí samotný zážitok zo sledovania.',
-      why: 'Navrhla som modulárny dizajnový systém - karty výziev, progres, rebríčky a odmeny ako samostatné komponenty, ktoré sa dajú skladať podľa fázy sezóny. Prioritou bola čitateľná hierarchia a okamžitá spätná väzba, aby bol panel použiteľný aj počas rýchleho diania na trati. Gamifikačné slučky (predpoveď, výsledok, odmena) som ladila tak, aby motivovali návraty a nepôsobili manipulatívne.'
+      sections: [
+        { label: 'Kontext', blocks: [
+          ['p', 'F1 Gamification Panel je konceptuálny návrh interaktívneho dashboardu pre fanúšikov Formuly 1. Cieľom konceptu bolo rozšíriť zážitok zo sledovania pretekov o gamifikačné prvky, ktoré podporujú dlhodobú angažovanosť počas celej sezóny prostredníctvom predpovedí, výziev, rebríčkov a odmien.']
+        ]},
+        { label: 'Zadanie', blocks: [
+          ['p', 'Zapojenie fanúšikov medzi jednotlivými pretekmi počas sezóny často výrazne klesá. Sledovanie je prevažne pasívne a chýba dôvod vracať sa k platforme aj mimo samotných Grand Prix.'],
+          ['p', 'Cieľom návrhu bolo:'],
+          ['ul', [
+            'zvýšiť angažovanosť fanúšikov počas celej sezóny,',
+            'podporiť pravidelné návraty používateľov,',
+            'rozšíriť zážitok zo sledovania pretekov bez narušenia hlavného obsahu,',
+            'navrhnúť intuitívny systém gamifikačných prvkov.'
+          ]]
+        ]},
+        { label: 'Rozsah práce', blocks: [
+          ['p', 'Projekt predstavoval konceptuálny návrh gamifikačného dashboardu - od návrhu používateľského zážitku až po vizuálny dizajn jednotlivých komponentov.'],
+          ['p', 'Počas projektu som navrhla:'],
+          ['ul', [
+            'informačnú architektúru dashboardu,',
+            'používateľské scenáre (User Flows),',
+            'wireframy,',
+            'modulárny dizajn systém,',
+            'UI komponenty,',
+            'high-fidelity obrazovky,',
+            'interaktívne prototypy,',
+            'gamifikačné mechaniky a používateľské interakcie.'
+          ]]
+        ]},
+        { label: 'Dizajnový prístup', blocks: [
+          ['p', 'Návrh bol postavený na myšlienke, že gamifikácia má dopĺňať sledovanie pretekov, nie odvádzať od neho pozornosť. Rozhranie preto kladie dôraz na jasnú informačnú hierarchiu, rýchlu orientáciu a okamžitú spätnú väzbu aj počas dynamického priebehu pretekov.'],
+          ['p', 'Kľúčové dizajnové rozhodnutia:'],
+          ['ul', [
+            '**Modulárny dizajn systém** - jednotlivé prvky, ako výzvy, rebríčky, odmeny či progres, fungujú ako samostatné komponenty, ktoré možno flexibilne kombinovať podľa fázy sezóny.',
+            '**Čitateľná informačná hierarchia** - panel umožňuje rýchlu orientáciu aj počas živého sledovania pretekov.',
+            '**Okamžitá spätná väzba** - používateľ dostáva priebežné informácie o svojom postupe, získaných bodoch a odmenách.',
+            '**Gamifikácia podporujúca návraty** - mechaniky predpovedí, výziev a odmien motivujú používateľov vracať sa medzi jednotlivými pretekmi.',
+            '**Nenarušenie hlavného zážitku** - gamifikačné prvky boli navrhnuté ako doplnková vrstva, ktorá podporuje sledovanie Formuly 1 bez zbytočného zahltenia rozhrania.'
+          ]]
+        ]},
+        { label: 'Kľúčové oblasti', blocks: [
+          ['tags', ['UX stratégia','Gamification Design','Informačná architektúra','User Flows','Wireframing','Prototypovanie','UI Design','Design System','Dashboard Design','Koncept produktu']]
+        ]}
+      ]
     },
+
+    pulsesound: {
+      title: 'PulseSound',
+      cat: 'Webový dizajn · Branding · Audio platforma',
+      concept: true,
+      sections: [
+        { label: 'Kontext', blocks: [
+          ['p', 'PulseSound je konceptuálny návrh značky a webovej platformy pre audio tvorcov. Cieľom konceptu bolo vytvoriť priestor, kde môžu podcasteri, hudobníci a nezávislí tvorcovia publikovať svoj obsah, budovať vlastnú identitu a vytvárať komunitu okolo svojej tvorby.']
+        ]},
+        { label: 'Zadanie', blocks: [
+          ['p', 'Existujúce audio platformy často zobrazujú hudbu, podcasty a živé vysielania v jednotnom feede bez dostatočného dôrazu na identitu samotného tvorcu. Koncept vznikol s cieľom preskúmať, ako by mohla vyzerať platforma, v ktorej je zvuk hlavným prvkom používateľského zážitku a tvorca dostáva priestor budovať vlastnú značku.'],
+          ['p', 'Cieľom návrhu bolo:'],
+          ['ul', [
+            'vytvoriť intuitívne prostredie pre objavovanie audio obsahu,',
+            'zvýrazniť identitu jednotlivých tvorcov,',
+            'navrhnúť konzistentný vizuálny jazyk značky,',
+            'podporiť jednoduché počúvanie obsahu naprieč celou platformou.'
+          ]]
+        ]},
+        { label: 'Rozsah práce', blocks: [
+          ['p', 'Projekt predstavoval konceptuálny návrh značky a webovej platformy - od definovania vizuálnej identity až po návrh používateľského rozhrania.'],
+          ['p', 'Počas projektu som navrhla:'],
+          ['ul', [
+            'vizuálnu identitu značky,',
+            'informačnú architektúru webu,',
+            'používateľské scenáre (User Flows),',
+            'wireframy,',
+            'UI komponenty,',
+            'dizajn systém,',
+            'high-fidelity obrazovky,',
+            'interaktívne prototypy,',
+            'responzívny webový dizajn.'
+          ]]
+        ]},
+        { label: 'Dizajnový prístup', blocks: [
+          ['p', 'Návrh bol postavený okolo myšlienky, že prehrávanie zvuku je hlavnou aktivitou používateľa. Rozhranie preto kladie dôraz na nepretržitý prístup k prehrávaču, jednoduchú orientáciu v obsahu a silnú vizuálnu identitu tvorcov.'],
+          ['p', 'Kľúčové dizajnové rozhodnutia:'],
+          ['ul', [
+            '**Perzistentný prehrávač** - prehrávanie zostáva dostupné naprieč celou platformou bez prerušenia používateľského toku.',
+            '**Waveform ako hlavný vizuálny prvok** - zvuk je komunikovaný prostredníctvom jednotnej vizuálnej metafory naprieč rozhraním.',
+            '**Minimalistická tmavá téma** - redukovaná farebná paleta necháva vyniknúť obalom albumov, vizualizáciám a samotnému obsahu.',
+            '**Silná identita tvorcov** - koncept dáva priestor vlastnému brandingu namiesto uniformných profilov.',
+            '**Škálovateľný dizajn systém** - vizuálna identita bola navrhnutá ako konzistentný systém komponentov a dizajnových tokenov využiteľný naprieč webom aj budúcimi produktmi.'
+          ]]
+        ]},
+        { label: 'Kľúčové oblasti', blocks: [
+          ['tags', ['Branding','UX stratégia','Informačná architektúra','User Flows','Wireframing','Prototypovanie','UI Design','Design System','Responzívny webový dizajn','Koncept produktu']]
+        ]}
+      ]
+    },
+
     herbert: {
       title: 'Herbert',
       cat: 'Produktový dizajn · Vizuálna identita · Web',
       concept: true,
-      about: 'Herbert je koncepčný návrh značky, produktu a webu pre modernú remeselnú značku - od vizuálnej identity až po e-shop, ktorý predáva rovnako príbehom ako aj funkciou.',
-      problem: 'Malé remeselné značky často strácajú dôveru práve v momente nákupu - vizuál nesedí s kvalitou produktu a e-shop pridáva trenie v kritických krokoch. Zadaním bolo spojiť charakter značky s plynulým nákupným tokom, ktorý znižuje pochybnosti a vedie k dokončeniu objednávky.',
-      why: 'Identitu som postavila na teplom, čistom vizuálnom jazyku a e-shop navrhla okolo produktu - s dôrazom na hierarchiu informácií, kvalitnú fotografiu a mikrokopírovanie, ktoré rieši námietky priamo v mieste rozhodovania. Nákupný tok od produktu po checkout som skrátila na minimum krokov a celé to zastrešila dizajnovým systémom, aby značka vedela rásť a pridávať produkty bez straty konzistencie.'
+      sections: [
+        { label: 'Kontext', blocks: [
+          ['p', 'Herbert je konceptuálny návrh značky, produktu a e-commerce webu pre modernú remeselnú značku. Cieľom konceptu bolo vytvoriť dôveryhodnú značku a nákupný zážitok, ktorý prepája kvalitnú vizuálnu identitu s intuitívnym e-shopom.']
+        ]},
+        { label: 'Zadanie', blocks: [
+          ['p', 'Menšie remeselné značky často zápasia s tým, že kvalita ich produktov sa neodráža vo vizuálnej prezentácii ani v používateľskom zážitku počas nákupu. Výsledkom býva nižšia dôvera zákazníkov a zbytočné prekážky pri dokončení objednávky.'],
+          ['p', 'Cieľom návrhu bolo:'],
+          ['ul', [
+            'vytvoriť dôveryhodnú vizuálnu identitu značky,',
+            'navrhnúť intuitívny e-commerce zážitok,',
+            'zjednodušiť nákupný proces,',
+            'podporiť vyššiu mieru dokončenia objednávok.'
+          ]]
+        ]},
+        { label: 'Rozsah práce', blocks: [
+          ['p', 'Projekt predstavoval konceptuálny návrh značky a e-commerce riešenia - od vizuálnej identity až po návrh kompletného používateľského rozhrania webu.'],
+          ['p', 'Počas projektu som navrhla:'],
+          ['ul', [
+            'vizuálnu identitu značky,',
+            'informačnú architektúru webu,',
+            'používateľské scenáre (User Flows),',
+            'wireframy,',
+            'UI komponenty,',
+            'dizajn systém,',
+            'high-fidelity obrazovky,',
+            'responzívny e-commerce dizajn,',
+            'interaktívne prototypy.'
+          ]]
+        ]},
+        { label: 'Dizajnový prístup', blocks: [
+          ['p', 'Návrh bol postavený na myšlienke, že značka a používateľský zážitok musia pôsobiť rovnako kvalitne ako samotný produkt. Rozhranie preto kladie dôraz na prehľadnosť, dôveryhodnosť a plynulý nákupný proces.'],
+          ['p', 'Kľúčové dizajnové rozhodnutia:'],
+          ['ul', [
+            '**Silná vizuálna identita** - značka využíva čistý a nadčasový vizuálny jazyk, ktorý podporuje remeselný charakter produktov.',
+            '**Produkt v centre pozornosti** - rozhranie je navrhnuté tak, aby kvalitná fotografia, informácie o produkte a jeho výhody boli vždy na prvom mieste.',
+            '**Hierarchia informácií** - obsah je usporiadaný tak, aby používateľ dostal odpovede na najdôležitejšie otázky v správnom momente nákupného procesu.',
+            '**Jednoduchý nákupný tok** - cesta od produktu až po dokončenie objednávky bola navrhnutá s minimálnym počtom krokov a zbytočných prekážok.',
+            '**Škálovateľný dizajn systém** - vizuálna identita a komponenty boli navrhnuté tak, aby značka mohla jednoducho rozširovať ponuku produktov pri zachovaní konzistentného používateľského zážitku.'
+          ]]
+        ]},
+        { label: 'Kľúčové oblasti', blocks: [
+          ['tags', ['Branding','UX stratégia','E-commerce UX','Informačná architektúra','User Flows','Wireframing','Prototypovanie','UI Design','Design System','Responzívny webový dizajn']]
+        ]}
+      ]
     },
-    playstation: {
-      title: 'PlayStation',
-      cat: 'Produktový dizajn · UX/UI',
-      concept: true,
-      about: 'Koncepčný redizajn časti PlayStation zážitku so zameraním na objavovanie a výber hier - rýchlejšia navigácia, osobnejšie odporúčania a rozhranie, ktoré necháva vyniknúť samotné hry.',
-      problem: 'Objavovanie hier trpelo preťažením - priveľa titulov a promo obsahu naraz, slabá personalizácia a zdĺhavá cesta od záujmu k výberu. Zadaním bolo skrátiť cestu k "tej správnej hre" a znížiť kognitívnu záťaž pri prehliadaní, bez straty prémiového, herného charakteru značky.',
-      why: 'Prepracovala som informačnú architektúru a hierarchiu tak, aby personalizované odporúčania a kľúčové akcie dostali prioritu a redukoval sa vizuálny šum. Zvolila som tmavé, filmové prostredie, kde artworky hier nesú pozornosť a rozhranie ustupuje obsahu. Rozhodnutia som opierala o rýchlosť výberu a konzistentné vzory naprieč celým tokom - od objavenia po kúpu.'
-    },
+
     otters: {
       title: 'Otters tech conference ‘25',
       cat: 'Event branding · Web · Vizuálna identita',
       concept: true,
-      about: 'Otters je koncept vizuálnej identity a webu pre technologickú konferenciu - od loga a dizajnového systému cez landing page až po materiály pre návštevníkov a rečníkov.',
-      problem: 'Technologické podujatia pôsobia buď príliš korporátne, alebo neprehľadne, a ich web nezvládne naraz predať atmosféru aj jasne odkomunikovať program a registráciu. Zadaním bolo vytvoriť identitu a web, ktoré sú dôveryhodné aj živé a zároveň funkčne vedú návštevníka k registrácii.',
-      why: 'Navrhla som odvážny, energický vizuálny systém s výraznou akcentáciou a pohybom, ktorý odlišuje Otters od typických tech eventov, no drží sa jasných pravidiel systému. Web som postavila okolo prehľadného programu a opakovanej výzvy na registráciu, s dôrazom na hierarchiu a rýchlu orientáciu. Identitu som navrhla ako konzistentný systém použiteľný od webu cez event materiály po sociálne siete.'
+      sections: [
+        { label: 'Kontext', blocks: [
+          ['p', 'Otters Tech Conference ‘25 je konceptuálny návrh vizuálnej identity a webovej prezentácie pre technologickú konferenciu. Cieľom konceptu bolo vytvoriť modernú a zapamätateľnú značku, ktorá prepája atraktívny vizuálny štýl s prehľadným používateľským zážitkom počas registrácie a orientácie na podujatí.']
+        ]},
+        { label: 'Zadanie', blocks: [
+          ['p', 'Webové stránky technologických konferencií často nedokážu vyvážiť silnú vizuálnu identitu s prehľadnou komunikáciou programu, rečníkov a registrácie. Výsledkom býva zložitá orientácia a nižšia motivácia návštevníkov dokončiť registráciu.'],
+          ['p', 'Cieľom návrhu bolo:'],
+          ['ul', [
+            'vytvoriť výraznú vizuálnu identitu konferencie,',
+            'navrhnúť intuitívny web zameraný na registráciu,',
+            'zlepšiť orientáciu v programe a informáciách,',
+            'vytvoriť konzistentný vizuálny systém použiteľný naprieč všetkými komunikačnými kanálmi.'
+          ]]
+        ]},
+        { label: 'Rozsah práce', blocks: [
+          ['p', 'Projekt predstavoval konceptuálny návrh vizuálnej identity a webovej prezentácie - od tvorby značky až po návrh kompletného používateľského rozhrania.'],
+          ['p', 'Počas projektu som navrhla:'],
+          ['ul', [
+            'vizuálnu identitu konferencie,',
+            'logo a princípy brandingu,',
+            'informačnú architektúru webu,',
+            'používateľské scenáre (User Flows),',
+            'wireframy,',
+            'UI komponenty,',
+            'dizajn systém,',
+            'high-fidelity obrazovky,',
+            'responzívny webový dizajn,',
+            'interaktívne prototypy,',
+            'koncept vizuálnych materiálov pre účastníkov a rečníkov.'
+          ]]
+        ]},
+        { label: 'Dizajnový prístup', blocks: [
+          ['p', 'Návrh bol postavený na myšlienke, že technologická konferencia môže pôsobiť profesionálne aj vizuálne atraktívne zároveň. Rozhranie preto kombinuje výraznú identitu s jasnou informačnou hierarchiou a intuitívnou navigáciou.'],
+          ['p', 'Kľúčové dizajnové rozhodnutia:'],
+          ['ul', [
+            '**Výrazná vizuálna identita** - značka využíva energickú farebnú paletu, výraznú typografiu a dynamické grafické prvky, ktoré odlišujú konferenciu od bežných technologických podujatí.',
+            '**Prehľadná štruktúra obsahu** - program, rečníci a ďalšie informácie sú usporiadané tak, aby sa používateľ rýchlo orientoval.',
+            '**Registrácia ako hlavný cieľ** - výzvy na registráciu sú prirodzene integrované naprieč webom bez narušenia používateľského zážitku.',
+            '**Konzistentný dizajn systém** - identita bola navrhnutá ako škálovateľný systém komponentov využiteľný na webe, sociálnych sieťach aj eventových materiáloch.',
+            '**Responzívny prístup** - rozhranie bolo navrhnuté s dôrazom na pohodlné používanie na mobilných zariadeniach aj desktopoch.'
+          ]]
+        ]},
+        { label: 'Kľúčové oblasti', blocks: [
+          ['tags', ['Branding','UX stratégia','Informačná architektúra','User Flows','Wireframing','Prototypovanie','UI Design','Design System','Responzívny webový dizajn','Landing Page Design']]
+        ]}
+      ]
+    },
+
+    playstation: {
+      title: 'PlayStation',
+      cat: 'Produktový dizajn · UX/UI',
+      concept: true,
+      sections: [
+        { label: 'Kontext', blocks: [
+          ['p', 'PlayStation je konceptuálny redizajn časti používateľského zážitku zameraný na objavovanie a výber hier. Cieľom konceptu bolo navrhnúť prehľadnejšie rozhranie, ktoré pomáha používateľom rýchlejšie nájsť relevantné hry prostredníctvom lepšej navigácie a personalizovaných odporúčaní.']
+        ]},
+        { label: 'Zadanie', blocks: [
+          ['p', 'Objavovanie hier môže byť pri veľkom množstve titulov a propagačného obsahu neprehľadné. Používatelia sa často stretávajú s informačným preťažením, slabou personalizáciou a zdĺhavou cestou od prvotného záujmu až po výber hry.'],
+          ['p', 'Cieľom návrhu bolo:'],
+          ['ul', [
+            'zjednodušiť objavovanie nových hier,',
+            'skrátiť cestu od objavenia k výberu alebo nákupu,',
+            'znížiť kognitívnu záťaž pri prehliadaní obsahu,',
+            'zachovať prémiový charakter značky PlayStation.'
+          ]]
+        ]},
+        { label: 'Rozsah práce', blocks: [
+          ['p', 'Projekt predstavoval konceptuálny redizajn používateľského rozhrania zameraného na objavovanie hier - od analýzy používateľského toku až po návrh finálneho vizuálneho rozhrania.'],
+          ['p', 'Počas projektu som navrhla:'],
+          ['ul', [
+            'informačnú architektúru,',
+            'používateľské scenáre (User Flows),',
+            'wireframy,',
+            'navigačný systém,',
+            'personalizované sekcie obsahu,',
+            'UI komponenty,',
+            'dizajn systém,',
+            'high-fidelity obrazovky,',
+            'interaktívne prototypy.'
+          ]]
+        ]},
+        { label: 'Dizajnový prístup', blocks: [
+          ['p', 'Návrh bol postavený na myšlienke, že rozhranie má podporovať objavovanie hier bez zbytočného vizuálneho šumu. Prioritou bolo zvýrazniť samotný obsah a zároveň zjednodušiť rozhodovanie používateľa.'],
+          ['p', 'Kľúčové dizajnové rozhodnutia:'],
+          ['ul', [
+            '**Prepracovaná informačná architektúra** - obsah je organizovaný tak, aby sa používatelia rýchlejšie dostali k relevantným hrám.',
+            '**Personalizované odporúčania** - odporúčaný obsah získava vyššiu prioritu a pomáha skrátiť čas potrebný na výber.',
+            '**Minimalizácia vizuálneho šumu** - rozhranie ustupuje do pozadia a necháva vyniknúť artworky a vizuálnu identitu jednotlivých hier.',
+            '**Prémiový vizuálny štýl** - tmavé prostredie podporuje filmový charakter značky a vytvára konzistentný herný zážitok.',
+            '**Konzistentný používateľský tok** - navigácia a interakcie boli navrhnuté tak, aby používateľa prirodzene sprevádzali od objavenia hry až po jej nákup.'
+          ]]
+        ]},
+        { label: 'Kľúčové oblasti', blocks: [
+          ['tags', ['UX stratégia','Informačná architektúra','User Flows','Wireframing','Prototypovanie','UI Design','Design System','Personalizácia používateľského zážitku','Dashboard Design','Koncept produktu']]
+        ]}
+      ]
     }
   };
 
   function esc(s) {
     return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function fmt(s) {
+    return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  }
+  function renderBlock(b) {
+    if (b[0] === 'p') return '<p class="pd-text">' + fmt(b[1]) + '</p>';
+    if (b[0] === 'ul') return '<ul class="pd-list">' + b[1].map(function (i) { return '<li>' + fmt(i) + '</li>'; }).join('') + '</ul>';
+    if (b[0] === 'tags') return '<div class="pd-tags">' + b[1].map(function (t) { return '<span class="pd-chip">' + esc(t) + '</span>'; }).join('') + '</div>';
+    return '';
   }
 
   /* ---- build overlay once ---- */
@@ -79,12 +340,14 @@
     var d = DATA[key];
     if (!d) return;
     var tag = d.concept ? '<span class="pd-tag">Koncept</span>' : '';
-    pdBody.innerHTML =
+    var html =
       '<div class="pd-eyebrow">' + esc(d.cat) + tag + '</div>' +
-      '<h2 class="pd-title" id="pd-title">' + esc(d.title) + '</h2>' +
-      '<div class="pd-section"><div class="pd-label">Kontext</div><p class="pd-text">' + esc(d.about) + '</p></div>' +
-      '<div class="pd-section"><div class="pd-label">Zadanie</div><p class="pd-text">' + esc(d.problem) + '</p></div>' +
-      '<div class="pd-section"><div class="pd-label">Prístup</div><p class="pd-text">' + esc(d.why) + '</p></div>';
+      '<h2 class="pd-title" id="pd-title">' + esc(d.title) + '</h2>';
+    d.sections.forEach(function (s) {
+      html += '<div class="pd-section"><div class="pd-label">' + esc(s.label) + '</div>' +
+        s.blocks.map(renderBlock).join('') + '</div>';
+    });
+    pdBody.innerHTML = html;
     overlay.classList.add('open');
     document.body.classList.add('pd-lock');
     sheet.scrollTop = 0;
@@ -101,31 +364,45 @@
     if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
   });
 
-  /* ---- inject the subtle buttons into every project card / banner ---- */
+  /* ---- inject the subtle button UNDER each project's name + description ---- */
+  function makeBtn(key, mobile) {
+    var btn = document.createElement(mobile ? 'span' : 'button');
+    btn.className = mobile ? 'pd-btn-m' : 'pd-btn';
+    if (mobile) { btn.setAttribute('role', 'button'); btn.setAttribute('tabindex', '0'); }
+    else btn.setAttribute('type', 'button');
+    btn.setAttribute('data-proj', key);
+    btn.innerHTML = 'Zobraziť detail ' + ARROW;
+    return btn;
+  }
   function injectButtons() {
-    var cards = document.querySelectorAll('.pimg[data-proj], .proj-card[data-proj], .carousel[data-proj], .m-proj[data-proj]');
-    cards.forEach(function (el) {
-      var key = el.getAttribute('data-proj');
-      if (!DATA[key]) return;
-      if (el.getAttribute('data-pd')) return; // already injected
+    // desktop: element carrying data-pdbtn = the subtitle/label under which the button goes
+    document.querySelectorAll('[data-pdbtn]').forEach(function (el) {
+      var key = el.getAttribute('data-pdbtn');
+      if (!DATA[key] || el.getAttribute('data-pd')) return;
       el.setAttribute('data-pd', '1');
-      var mobile = !!el.closest('#mobile');
-      var btn = document.createElement(mobile ? 'span' : 'button');
-      btn.className = mobile ? 'pd-btn-m' : 'pd-btn';
-      btn.setAttribute('data-proj', key);
-      if (!mobile) btn.setAttribute('type', 'button');
-      btn.innerHTML = 'Zobraziť detail ' + ARROW;
-      el.appendChild(btn);
+      el.appendChild(makeBtn(key, false));
+    });
+    // mobile: append at the end of each card (below the name + description)
+    document.querySelectorAll('#mobile .m-proj[data-proj]').forEach(function (el) {
+      var key = el.getAttribute('data-proj');
+      if (!DATA[key] || el.getAttribute('data-pd')) return;
+      el.setAttribute('data-pd', '1');
+      el.appendChild(makeBtn(key, true));
     });
   }
 
-  /* delegated: button opens the modal (and never triggers the card link) */
   document.addEventListener('click', function (e) {
     var b = e.target.closest('.pd-btn, .pd-btn-m');
     if (!b) return;
     e.preventDefault();
     e.stopPropagation();
     openModal(b.getAttribute('data-proj'));
+  });
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('pd-btn-m')) {
+      e.preventDefault();
+      openModal(e.target.getAttribute('data-proj'));
+    }
   });
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectButtons);
