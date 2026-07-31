@@ -26,7 +26,7 @@
           ]]
         ]},
         { label: 'Rozsah práce', blocks: [
-          ['p', 'Projekt zahŕňal kompletný návrh používateľského zážitku a používateľského rozhrania mobilnej aplikácie - od prvotného konceptu až po finálny dizajn pripravený na implementáciu.'],
+          ['p', 'Projekt zahŕňal kompletný návrh používateľského zážitku a rozhrania celej aplikácie - od toho, čo vidí zákazník (objavovanie, rezervácia a platba), až po tvorcovskú časť (vytvorenie klubu či eventu a creator dashboard). Od prvotného konceptu po finálny dizajn pripravený na implementáciu.'],
           ['p', 'Počas projektu som navrhla:'],
           ['ul', [
             'informačnú architektúru aplikácie,',
@@ -34,6 +34,9 @@
             'wireframy,',
             'onboarding používateľa,',
             'personalizačný systém **Woeva Picks**,',
+            'rezervačný a platobný tok (checkout),',
+            'vytvorenie klubu a eventu,',
+            'creator dashboard pre organizátorov,',
             'dizajn systém a UI komponenty,',
             'high-fidelity obrazovky,',
             'interaktívne prototypy,',
@@ -46,7 +49,7 @@
           ['ul', [
             '**Objavovanie v reálnom čase** - prioritou bolo zobrazovať obsah, ktorý je aktuálny práve v danom momente.',
             '**Personalizácia od prvého spustenia** - onboarding zbiera informácie o záujmoch a lokalite používateľa, aby bol obsah relevantný už od prvého otvorenia aplikácie.',
-            '**Zníženie rozhodovacej záťaže** - namiesto nekonečného feedu aplikácia ponúka personalizované odporúčania prostredníctvom funkcie **Woeva Picks**.',
+            '**Zníženie rozhodovacej záťaže** - namiesto nekonečného feedu ponúka **Woeva Picks** kurátorsky vybrané, personalizované eventy.',
             '**Lokalita ako základ navigácie** - obsah sa prispôsobuje aktuálnej polohe používateľa a jeho bezprostrednému okoliu.',
             '**Postupný rollout po mestách** - aplikácia bola navrhnutá tak, aby sa v každom meste najskôr vybudovala aktívna komunita a dostatočné množstvo relevantného obsahu pred ďalšou expanziou.'
           ]]

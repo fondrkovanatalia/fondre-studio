@@ -271,5 +271,52 @@
 <script src="app.js"></script>
 <script src="i18n.js"></script>
 <script src="project-modals.js"></script>
+<script>
+/* home projects carousel: sync the title + modal link with the current slide
+   (carousel_1 = Otters, carousel_2 = PulseSound, carousel_3 = Woeva) */
+(function () {
+  var MAP = [
+    { p: 'otters', n: 'Otters tech conference ‘25' },
+    { p: 'pulsesound', n: 'PulseSound' },
+    { p: 'woeva', n: 'Woeva' }
+  ];
+  function setText(el, txt) {
+    if (!el) return;
+    var t = null, i;
+    for (i = 0; i < el.childNodes.length; i++) { if (el.childNodes[i].nodeType === 3) { t = el.childNodes[i]; break; } }
+    if (t) t.nodeValue = txt; else el.insertBefore(document.createTextNode(txt), el.firstChild);
+  }
+  /* desktop: CSS-animated carousel -> read the track transform */
+  var car = document.querySelector('#frame .carousel[data-proj]');
+  var track = car && car.querySelector('.track');
+  var dTitle = document.querySelector('#frame .tenor[data-proj="otters"]');
+  if (car && track && dTitle) {
+    var dCur = -1;
+    var now = function () { return (window.performance && performance.now) ? performance.now() : Date.now(); };
+    var t0 = now();
+    /* keep t0 aligned with the CSS animation's real start */
+    if (track.getAnimations) { var a0 = track.getAnimations()[0]; if (a0 && a0.currentTime != null) t0 = now() - a0.currentTime; }
+    var pick = function () {
+      var pct = ((now() - t0) % 15000) / 150; /* slideTrack runs 15s */
+      var idx = pct < 23.33 ? 0 : pct < 50 ? 1 : pct < 76.66 ? 2 : 0;
+      if (idx !== dCur) { dCur = idx; var o = MAP[idx]; setText(dTitle, o.n); dTitle.setAttribute('data-proj', o.p); car.setAttribute('data-proj', o.p); }
+    };
+    setInterval(pick, 120); pick();
+  }
+  /* mobile: manual horizontal slider -> read scrollLeft */
+  var slider = document.querySelector('#mobile .m-slider');
+  if (slider) {
+    var mCard = slider.nextElementSibling, mTtl = mCard && mCard.querySelector('.ttl'), mCur = -1;
+    var msync = function () {
+      var s = slider.querySelector('.m-slide'); if (!s) return;
+      var sw2 = s.getBoundingClientRect().width + 12;
+      var idx = Math.max(0, Math.min(2, Math.round(slider.scrollLeft / sw2)));
+      if (idx !== mCur) { mCur = idx; var o = MAP[idx]; setText(mTtl, o.n); if (mCard) mCard.setAttribute('data-proj', o.p); }
+    };
+    slider.addEventListener('scroll', msync, { passive: true });
+    msync();
+  }
+})();
+</script>
 </body>
 </html>
