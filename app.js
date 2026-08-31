@@ -11,9 +11,9 @@
   const navHTML = `
       <div class="nav-bar"></div>
       <a href="index.html" class="abs tenor" style="left:134px;top:30px;font-size:36px;color:#fdfdfd;letter-spacing:-1.8px;z-index:51;line-height:normal">Fondré Studio</a>
-      <a href="index.html" class="abs tenor" style="left:136px;top:66px;font-size:18px;color:#b8b8b8;letter-spacing:-0.27px;z-index:51;line-height:normal">Digital products designers</a>
+      <a href="index.html" class="abs tenor" style="left:136px;top:66px;font-size:18px;color:#b8b8b8;letter-spacing:-0.27px;z-index:51;line-height:normal">Digital products designer</a>
       <a href="projekty.html" class="abs dm nav-link ${active==='projekty'?'active':''}" style="left:1135px;top:52px;font-size:20px;color:#fff;letter-spacing:-1px;z-index:51;line-height:normal">Projekty</a>
-      <a href="o-nas.html" class="abs dm nav-link ${active==='onas'?'active':''}" style="left:1270px;top:52px;font-size:20px;color:#fff;letter-spacing:-1px;z-index:51;line-height:normal">O nás</a>
+      <a href="o-nas.html" class="abs dm nav-link ${active==='onas'?'active':''}" style="left:1270px;top:52px;font-size:20px;color:#fff;letter-spacing:-1px;z-index:51;line-height:normal">O mne</a>
       <div class="abs lang" id="langSel" style="left:1360px;top:44px;z-index:60">
         <button class="lang-btn dm" type="button" aria-haspopup="listbox" aria-expanded="false">
           <span class="lang-code">SK</span>
@@ -26,7 +26,7 @@
           <button role="option" data-lang="DE"><span>Deutsch</span><b>DE</b></button>
         </div>
       </div>
-      <a href="index.html#kontakt" class="abs dm nav-cta cta-pill" style="left:1466px;top:45px;height:45px;z-index:52">Kontaktujte nás</a>
+      <a href="index.html#kontakt" class="abs dm nav-cta cta-pill" style="left:1466px;top:45px;height:45px;z-index:52">Kontaktujte ma</a>
   `;
   let topnav = document.getElementById('topnav');
   if (!topnav) { topnav = document.createElement('div'); topnav.id = 'topnav'; document.body.appendChild(topnav); }
@@ -74,16 +74,16 @@
   /* ---------- mobile navbar + overlay menu ---------- */
   if (!document.getElementById('mnav')) {
     const mn = document.createElement('div'); mn.id = 'mnav';
-    mn.innerHTML = `<a class="mnav-logo" href="index.html"><b>Fondré Studio</b><small>Digital products designers</small></a>
+    mn.innerHTML = `<a class="mnav-logo" href="index.html"><b>Fondré Studio</b><small>Digital products designer</small></a>
       <button class="mnav-burger" id="mburger" aria-label="Menu"><span></span><span></span><span></span></button>`;
     const mo = document.createElement('div'); mo.id = 'mnav-overlay';
     mo.innerHTML = `
       <a href="index.html" class="${active==='home'?'on':''}">Domov</a>
       <a href="projekty.html" class="${active==='projekty'?'on':''}">Projekty</a>
-      <a href="o-nas.html" class="${active==='onas'?'on':''}">O nás</a>
+      <a href="o-nas.html" class="${active==='onas'?'on':''}">O mne</a>
       <a href="ochrana-sukromia.html">Ochrana súkromia</a>
       <a href="pravidla-pouzivania.html">Pravidlá používania</a>
-      <a href="index.html#mkontakt" class="cta">Kontaktujte nás</a>
+      <a href="index.html#mkontakt" class="cta">Kontaktujte ma</a>
       <div class="mnav-langs">
         <button data-lang="SK" class="on">SK</button>
         <button data-lang="EN">EN</button>
@@ -117,11 +117,11 @@
       </div>
       <div class="m-foot">
         <div class="brand">Fondré Studio<small>©</small></div>
-        <div class="tag">Digital products designers</div>
+        <div class="tag">Digital products designer</div>
         <div class="links">
           <a href="index.html">Domov</a><a href="ochrana-sukromia.html">Ochrana súkromia</a>
-          <a href="o-nas.html">O nás</a><a href="pravidla-pouzivania.html">Pravidlá používania</a>
-          <a href="projekty.html">Projekty</a><a href="index.html#mkontakt">Kontaktujte nás</a>
+          <a href="o-nas.html">O mne</a><a href="pravidla-pouzivania.html">Pravidlá používania</a>
+          <a href="projekty.html">Projekty</a><a href="index.html#mkontakt">Kontaktujte ma</a>
         </div>
       </div>
       <div class="m-copy">© 2026 Created by Fondré Studio, All rights reserved.</div>`;
@@ -160,14 +160,14 @@
       <!-- light footer band -->
       <div class="abs" style="left:0;top:845px;width:1754px;height:505px;background:#fcfcfc"></div>
       <div class="abs tenor" style="left:133px;top:1047px;font-size:72.818px;color:#080d1d;letter-spacing:-3.6409px;line-height:normal">Fondré Studio<span style="font-size:24px;vertical-align:super">©</span></div>
-      <div class="abs tenor" style="left:137px;top:1119.82px;font-size:36.409px;color:#b8b8b8;letter-spacing:-0.5461px;line-height:normal">Digital products designers</div>
+      <div class="abs tenor" style="left:137px;top:1119.82px;font-size:36.409px;color:#b8b8b8;letter-spacing:-0.5461px;line-height:normal">Digital products designer</div>
 
       ${footLink('Domov','index.html',856,1014)}
       ${footLink('Ochrana súkromia','ochrana-sukromia.html',1145,1014)}
       ${footLink('Projekty','projekty.html',1434,1014)}
-      ${footLink('O nás','o-nas.html',857,1087)}
+      ${footLink('O mne','o-nas.html',857,1087)}
       ${footLink('Pravidlá používania','pravidla-pouzivania.html',1435,1087)}
-      ${footLink('Kontaktujte nás','index.html#kontakt',857,1160)}
+      ${footLink('Kontaktujte ma','index.html#kontakt',857,1160)}
 
       <!-- bottom dark strip -->
       <div class="abs tenor" style="left:174px;top:1419px;font-size:18px;color:#adaeb0;letter-spacing:-0.9px;line-height:normal">2026 Created by Fondré Studio, All rights reserved.</div>
@@ -187,7 +187,7 @@
 
   /* ---------- contact form: validation + states ---------- */
   const MSGS = {
-    SK: { fix: 'Skontrolujte, prosím, zvýraznené polia.', ok: 'Ďakujeme! Ozveme sa vám čo najskôr.', sending: 'Odosielam…', err: 'Správu sa nepodarilo odoslať. Skúste to znova alebo napíšte na fondrkova.natalia@gmail.com.' },
+    SK: { fix: 'Skontrolujte, prosím, zvýraznené polia.', ok: 'Ďakujem! Ozvem sa vám čo najskôr.', sending: 'Odosielam…', err: 'Správu sa nepodarilo odoslať. Skúste to znova alebo napíšte na fondrkova.natalia@gmail.com.' },
     EN: { fix: 'Please check the highlighted fields.', ok: "Thank you! We'll get back to you soon.", sending: 'Sending…', err: "Couldn't send your message. Please try again or email fondrkova.natalia@gmail.com." },
     DE: { fix: 'Bitte überprüfen Sie die markierten Felder.', ok: 'Danke! Wir melden uns bald bei Ihnen.', sending: 'Senden…', err: 'Nachricht konnte nicht gesendet werden. Bitte erneut versuchen oder an fondrkova.natalia@gmail.com schreiben.' },
     NL: { fix: 'Controleer de gemarkeerde velden.', ok: 'Bedankt! We nemen snel contact op.', sending: 'Versturen…', err: 'Bericht kon niet worden verzonden. Probeer opnieuw of mail naar fondrkova.natalia@gmail.com.' }
